@@ -1,0 +1,228 @@
+.pli-searchpage-container{
+    overflow: hidden;
+}
+
+.pli-searchpage-search-container{
+    width: 100%;
+    margin: 20% 0;
+}
+
+.pli-searchpage-window{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+}
+
+.pli-searchpage-input{
+    width: 30%;
+    height: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.pli-searchpage-input img{
+    position: absolute;
+    width: 20px;
+    right: 15px;
+    top: 10.5px;
+    opacity: 65%;
+}
+
+.pli-searchpage-window input[type=text] {
+    width: 100%;
+    height: 100%;
+    margin-right: 3px;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    padding: 0 10px;
+}
+
+.pli-searchpage-window input[type=text]:focus {
+    outline: none;
+}
+
+.pli-searchpage-content-container {
+    background-color: var(--white);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    margin-bottom: 15%;
+}
+
+.pli-searchpage-content-container-box{
+    width: 1000px;
+    height: 400px;
+    padding: 0 20px;
+    position: relative;
+}
+
+.pli-searchpage-content-title {
+    width: 100%;
+    height: auto;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.pli-searchpage-content-title img {
+    display: inline-block;
+    height: 24px;
+    margin-left: 10px;
+    position: relative;
+    top: 3px; 
+}
+
+.pli-searpage-content-slider-card-title{
+    width: 120px;
+    margin: 0 auto;
+    font-size: 90%;
+    margin-top: 5px;
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.pli-searchpage-content-item-container {
+    width: 100%;
+    height: 150px;
+}
+
+.pli-searchpage-slider{
+    width: 100%;
+    height: 150px;
+}
+
+.slick-prev, .slick-next {
+    display: none !important;
+}
+.custom-slick-arrow {
+    display: block;
+    z-index: 1000;
+    position: absolute;
+    top: 70%; 
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none; 
+    padding: 0; 
+    cursor: pointer;
+}
+
+.custom-slick-arrow img {
+    filter: grayscale(100%);
+    width: 20px; 
+    height: 20px;
+}
+
+.custom-slick-arrow:hover img {
+    filter: grayscale(100%) brightness(0.7);
+}
+
+.custom-slick-prev {
+    left: 10px; /* 왼쪽 화살표 위치 */
+}
+
+.custom-slick-next {
+    right: 10px; /* 오른쪽 화살표 위치 */
+}
+
+.slick-list, .slick-track{
+    display: flex;
+}
+
+.slick-next img, .slick-prev img{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: -20px;
+}
+
+.pli-searchpage-slider-container{
+    width: 100%;
+}
+
+.pli-searchpage-content-item-cards {
+    width: 30%; 
+    margin-bottom: 20px;
+    text-align: center; 
+}
+
+.pli-serachpage-content-slider-card {
+    width: 100%;
+    height: 150px;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+.pli-searchpage-content-slider-card-img{
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    border-radius: 15px;
+    margin: 0 auto;
+}
+
+
+.pli-serachpage-content-slider-card img {
+    height: 200px;
+    width: 200px;
+    max-width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+
+}
+
+.pli-searchpage-content-item-cards-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .main-best10-text h1{
+        font-size: 30px;
+    }
+    /* .pli-searchpage-slider {
+        width: 100%;  
+    }
+
+    .pli-serachpage-content-slider-card {
+        width: 100%;  
+    }
+
+    .pli-searchpage-content-slider-card-img {
+        max-width: 100%;  
+    }
+    .custom-slick-arrow {
+        position: fixed;  
+        top: 50%;        
+        left: 50%;       
+        transform: translate(-50%, -50%);  
+        z-index: 10000;  
+        width: 20px;     
+        height: 20px;
+    }
+    
+    .custom-slick-arrow img {
+        width: 100%;  
+        height: 100%;
+    }
+    .custom-slick-prev {
+        z-index: 10001; 
+        left: 10px; 
+        right: auto;
+    }
+    
+    .custom-slick-next {
+        z-index: 10000; 
+        right: 10px; 
+        left: auto;
+    } */
+}

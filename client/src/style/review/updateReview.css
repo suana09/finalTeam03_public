@@ -1,0 +1,83 @@
+/* App.css */
+.container {
+    background: #FFF9F0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.reviewContainer {
+    display: flex;
+    justify-content: center;
+    /* 중앙 정렬 */
+    align-items: flex-start;
+    /* 상단 정렬 */
+    max-width: 900px;
+    /* 최대 너비 설정 */
+    margin: auto;
+    /* 자동 마진으로 중앙에 배치 */
+    gap: 20px;
+    /* 섹션 간의 간격 */
+}
+
+
+.title {
+    width: 100%;
+    margin-left: -400px;
+}
+
+
+.writeReview {
+    flex: 1;
+    /* 각 섹션에 동일한 크기 할당 */
+    min-height: 600px;
+    /* 최소 높이 설정 */
+    background: #fff;
+    /* 배경색 설정 */
+    padding: 20px;
+    /* 패딩 설정 */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    /* 그림자 효과 */
+    border-radius: 8px;
+    /* 테두리 둥글게 */
+}
+
+
+
+.field {
+    margin-bottom: 20px;
+}
+
+.field label {
+    font-weight: bold;
+}
+
+.field img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.btns {
+    margin-top: 20px;
+}
+
+.btns button {
+    background: #0F0E0E;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.btns button:hover {
+    opacity: 0.9;
+    transition: 0.3s;
+}

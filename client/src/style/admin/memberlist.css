@@ -1,0 +1,161 @@
+.admin-member-container {
+    margin: 15% auto;
+    display: flex;
+    width: 750px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.admin-member-subject {
+    color: Var(--primary-color);
+    width: 100%;
+    display: flex;
+    font-size: 130%;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.admin-member-title-row {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    border-bottom: 1px solid Var(--gray);
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    align-items: center;
+}
+
+.admin-member-title-col {
+    display: flex;
+}
+
+.admin-member-content-row {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    height: 50px;
+}
+
+.admin-member-content-col {
+    display: flex;
+}
+
+.admin-member-container input[type=checkbox]:checked {
+    accent-color: var(--secondary-color);
+}
+
+.admin-member-btnfield {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 50px;
+    height: 35px;
+    width: 100%;
+}
+
+.admin-member-selectbox {
+    height: 100%;
+    margin: 0 10px;
+}
+
+.admin-member-selectbox select {
+    height: 100%;
+    width: 100%;
+    font-size: 80%;
+    border-radius: 5px;
+}
+
+.admin-member-selectbox select:focus {
+    outline: none;
+}
+
+.admin-member-selectbox select option {}
+
+.admin-member-btn {
+    height: 100%;
+}
+
+.admin-member-btn button {
+    height: 100%;
+    margin-left: 3px;
+    background-color: Var(--btn-gray);
+    border: none;
+    border-radius: 5px;
+    color: black;
+}
+
+.admin-member-btn button:hover {
+    background-color: Var(--btn-gray-hover);
+    color: white;
+    transition: 0.3s;
+}
+
+.flex3 {
+    flex: 3
+}
+
+.flex4 {
+    flex: 4
+}
+
+.flex1 {
+    flex: 1
+}
+
+.flex2 {
+    flex: 2
+}
+
+.admin-member-pagebtnfield {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    height: 35px;
+    width: 100%;
+}
+
+.admin-member-pagebtns{
+    width: 750px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: var(--btn-gray);
+}
+
+.admin-member-pagebtn-imgbtn{
+    height: 22px;
+    cursor: pointer;
+}
+
+.admin-member-pagebtn-imgbtn img{
+    width: 13px
+}
+
+.admin-member-pagebtn{
+    padding: 0 10px;
+    display: flex;
+    cursor: pointer;
+    height: 80%;
+    width: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagebtn-active{
+    color: black;
+}
+
+.pagebtn-unavailable{
+    opacity: 50%;
+}

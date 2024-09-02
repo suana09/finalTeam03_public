@@ -1,0 +1,88 @@
+/* profileEdit.css */
+
+.pfEdit-container {
+    border-radius: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    width: 800px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.pfEdit-container h1 {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    color: rgb(42, 86, 182);
+    font-weight: normal;
+}
+
+.pfEdit-fields {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    border-bottom: 1px solid #ccc;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+}
+
+.pfEdit-label {
+    display: flex;
+    flex: 1 1;
+    justify-content: flex-start;
+}
+
+.update {
+    margin-top: 50px;
+    width: 55%; /* 버튼의 너비를 100%로 설정 */
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: black;
+    font-weight: bold;
+    color: #fff;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.update:hover{
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.edit-input {
+    width: 70%;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .pfEdit-container {
+        padding-top: 20px;
+        padding-bottom: 40px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+    }
+    .pfEdit-fields {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+        justify-content: flex-start;
+        margin-bottom: 30px;
+    }
+}

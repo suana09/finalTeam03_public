@@ -1,0 +1,411 @@
+.btn button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn button:hover {
+    background-color: #0056b3;
+    transition: 0.3s;
+}
+
+.review {
+    max-width: 1300px;
+    max-height: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.review h3 {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.article {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+}
+
+
+.subPage {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    margin-top: -10px;
+}
+
+.reviewDetail {
+    max-width: 650px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 80px 20px;
+    font-family: 'Arial', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.detailinfo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.detailInfo-field0 {
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.detailInfo-field {
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 150px;
+}
+
+.detailInfo-field0Div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+
+.detailInfo-field0Div>div:first-child {
+    font-weight: bold;
+    flex: 0 1 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 150px;
+}
+
+.detailInfo-field0Div>div:nth-child(2) {
+    flex: 0 1 auto;
+    white-space: nowrap;
+}
+
+
+.detailInfo-field>div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.detailInfo-field2 {
+    margin: 0 auto;
+}
+
+.detailInfo-field2 .star {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #E0E0E0;
+    cursor: default;
+    margin-right: 5px;
+}
+
+.detailInfo-field2 .star .gold {
+    color: #FFD700;
+}
+
+.detailInfo-field2 .star-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin-left: -118px;
+}
+
+.detailimg {
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.detailimg img {
+    width: 300px;
+    height: 200px;
+    margin-top: 10px;
+    max-width: 300px;
+    border-radius: 10px;
+    margin-left: 150px;
+}
+
+.btns0 {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btns0 input[type="button"] {
+    background: #0F0E0E;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+}
+
+.btns0 input[type="button"]:hover {
+    background: #333333;
+    transition: 0.3s;
+}
+
+.reviewList {
+    display: flex;
+    flex-direction: column;
+    background: #FFF9F0;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #FFFFFF;
+    border: 1px solid darkgray;
+    box-sizing: border-box;
+}
+
+.row .rows {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid darkgray;
+    padding-bottom: 5px;
+}
+
+.row .cols {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+}
+
+.titlecol,
+.col {
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+}
+
+.titlecol {
+    font-weight: bold;
+}
+
+
+
+.row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #FFFFFF;
+    border: 1px solid darkgray;
+    box-sizing: border-box;
+}
+
+.rowContent {
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.titlecol {
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+}
+
+.colContent {
+    display: flex;
+    align-items: center;
+}
+
+.col {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+}
+
+.stars button {
+    margin: 0 0px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    padding: 1;
+}
+
+.star.gold {
+    color: gold;
+}
+
+.reviewContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    max-width: 1200px;
+}
+
+.col {
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+
+
+.reviewContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    max-width: 1200px;
+}
+
+.row {
+    flex: 0 1 60%;
+    max-width: 1000px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 1%;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+}
+
+
+
+.row {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 auto;
+    max-width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 15px;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+}
+
+.reviewList {
+    display: flex;
+    flex-direction: column;
+    background: #FFF9F0;
+    width: 100%;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .reviewDetail {
+        padding: 40px 15px;
+    }
+
+    .detailInfo-field0Div>div:first-child {}
+
+    .detailInfo-field0Div>div:nth-child(2) {}
+
+    .detailInfo-field>div {
+        margin-left: -115px;
+    }
+
+    .btns0 {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btns0 input[type="button"] {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .detailinfo {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .detailimg,
+    .detailleftinfo,
+    .detailRightInfo {
+        width: 100%;
+    }
+
+    .detailimg img {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .detailRightInfo {
+        margin-left: 3px;
+    }
+
+    .detailInfo-field>div {
+        margin-left: -115px;
+    }
+
+    .detailInfo-field0Div>div:first-child {
+        margin-left: 40px;
+    }
+
+    .detailInfo-field0Div>div:nth-child(2) {}
+}
+
+@media screen and (max-width: 480px) {
+    .reviewDetail {
+        padding: 20px 10px;
+    }
+
+    .detailInfo-field>div {
+        margin-left: -112px;
+        margin-top: 5px;
+    }
+
+    .detailimg {
+        padding: 5px;
+        width: 100%;
+    }
+
+    .detailimg img {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-top: 5px;
+    }
+
+    .btns0 input[type="button"] {
+        padding: 8px 15px;
+    }
+
+    .detailInfo-field0Div>div:first-child {
+        margin-left: 40px;
+    }
+
+    .detailInfo-field0Div>div:nth-child(2) {}
+
+}

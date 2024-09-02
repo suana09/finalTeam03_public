@@ -1,0 +1,104 @@
+.search-bar-container {
+    width: 1200px;
+    position: relative;
+}
+
+.search-bar-window {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-bottom: 20px;
+    background: white;
+}
+
+.search-bar-filter-icon{
+    height: 100%;
+    margin-right: 8px;
+    padding-top: 2px;
+    cursor: pointer;
+}
+
+.search-bar-filter-icon img{
+    height: 95%;
+    opacity: 60%;
+}
+
+.search-bar-container input[type=text] {
+    width: 25%;
+    height: 100%;
+    margin-right: 3px;
+    border: 1px solid #bbbbbb;
+    border-radius: 5px;
+    outline: none;
+}
+
+.search-bar-container button {
+    height: 100%;
+    background: var(--secondary-color);
+    width: 10%;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    font-weight: 700;
+    margin-right: 3px;
+    cursor: pointer;
+}
+
+.search-filter-section {
+    position: absolute;
+    top: 40px; /* 검색창 아래에 위치 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    z-index: 10;
+    display: none; /* 기본적으로 숨김 처리 */
+}
+
+.search-filter-section.active {
+    display: block; /* 활성화될 때 표시 */
+}
+
+
+.search-filter-popup {
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-filter-options {
+    display: flex;
+    justify-content: space-around;
+}
+
+.search-filter-option {
+    width: 48%;
+}
+
+.search-filter-option h3 {
+    margin-bottom: 10px;
+}
+
+
+.search-filter-option-label {
+    font-size: 110%;
+    /* font-weight: 700; */
+    padding: 4px;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+    .search-bar-container{
+        width: 800px;
+    }
+
+    .pli-searchpage-content-item-container{
+        width: 800px;
+    }
+}

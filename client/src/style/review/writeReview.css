@@ -1,0 +1,777 @@
+.createPlaceListFormContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.writePlaceListForm-defaultimage-label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.writePlaceListForm-defaultimage-label span {
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+
+.writeReview {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    margin-top: 110px;
+    border-radius: 15px 15px 15px 15px;
+    position: relative;
+    justify-content: center;
+}
+
+.writeReview-write {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    margin-top: 110px;
+    border-radius: 15px 15px 15px 15px;
+    position: relative;
+    justify-content: center;
+    margin-top: 1px;
+    box-shadow: none;
+}
+
+
+.writeReviewUpdate {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    margin-top: -30px;
+    border-radius: 15px 15px 15px 15px;
+    position: relative;
+    justify-content: center;
+
+}
+
+.writeReview2 {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    margin-top: 10px;
+    width: 100%;
+
+    position: relative;
+}
+
+.writeReview2-write {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    margin-top: 10px;
+    width: 100%;
+
+    position: relative;
+}
+
+
+.writeReview2-update {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    margin-top: 10px;
+    width: 100%;
+
+    position: relative;
+}
+
+
+.review-write-container {
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.review-write-container>h2 {
+    text-align: center;
+}
+
+.review-write-container-write {
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.review-write-container-write>h2 {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.review-write-container-update {
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.review-write-container-update>h2 {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.review-write-field {
+    display: flex;
+    border-bottom: 1px solid #c9c9c9;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    padding: 10px 0;
+}
+
+.review-write-field-write {
+    display: flex;
+    border-bottom: 1px solid #c9c9c9;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.review-write-input>button {
+    margin-top: -2px;
+    background: #0F0E0E;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    border-radius: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+
+.review-write-input-write>button {
+    margin-top: -2px;
+    background: #0F0E0E;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    border-radius: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+
+
+.review-write-input-write>div {
+    padding-top: 0px;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: -10px;
+}
+
+.review-write-field-update {
+    display: flex;
+    border-bottom: 1px solid #c9c9c9;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    padding: 10px 0;
+}
+
+
+.review-write-input-update>div {
+    padding-top: 0px;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: -10px;
+}
+
+.review-write-label {
+    flex: 1 1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+
+.review-write-label-write {
+    flex: 1 1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.review-write-label-update {
+    flex: 1 1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.review-write-input {
+    display: flex;
+    flex: 3 1;
+}
+
+.review-write-input-write {
+    display: flex;
+    flex: 3 1;
+}
+
+
+.review-write-input-update {
+    display: flex;
+    flex: 3 1;
+}
+
+.review-write-input-write>textarea {
+    width: 90%;
+    border: none;
+}
+
+textarea {
+    outline: none;
+    resize: none;
+}
+
+.review-write-input-update>textarea {
+    outline: none;
+    width: 480px;
+    border: none;
+    /* margin-left: 8px; */
+    resize: none;
+}
+
+
+.review-write-input-update>button {
+    margin-top: -2px;
+    background-color: #0F0E0E;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    border-radius: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+
+.review-write-field-updateimgprev {
+    flex: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.review-write-field-writeimgprev {
+    flex: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.review-write-field-updateimgprev img {
+    width: 200px;
+    height: 200px;
+}
+
+/* 추가 */
+#imgPrev {
+    width: 200px;
+    height: 200px;
+}
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.review-write-field input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.review-write-field-write input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.review-write-field-update input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.review-write-field input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    display: none;
+}
+
+.review-write-field-write input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    display: none;
+}
+
+.review-write-field-update input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    display: none;
+}
+
+.star {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.star.gold {
+    color: gold;
+}
+
+.btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btns-write {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: -50px;
+}
+
+.btns-update {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.btns button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    margin-top: 15%;
+}
+
+.btns-write button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0F0E0E;
+    color: white;
+    cursor: pointer;
+    margin-top: 15%;
+    width: 100%;
+}
+
+.btns-update button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0F0E0E;
+    color: white;
+    cursor: pointer;
+    margin-top: 15%;
+}
+
+.btns-update button:nth-child(2) {
+    background-color: #0F0E0E;
+    margin-left: 1px;
+}
+
+
+.titlecol {
+
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+    padding: 12px 8px;
+
+}
+
+.col {
+    text-align: center;
+    padding: 8px;
+}
+
+
+.rows {
+    color: white;
+    border-bottom: 1px solid wheat;
+}
+
+.row:hover {
+    background-color: #f1f1f1;
+    transition: 0.3s;
+}
+
+.titlecol {
+    padding: 10px 15px;
+}
+
+
+.placeList {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rowrow1 {
+    display: table-header-group;
+}
+
+.rows1 {
+    display: table-row;
+}
+
+.titlecol1 {
+    display: table-cell;
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+    background-color: #f2f2f2;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.row1 {
+    display: table-row;
+    cursor: pointer;
+}
+
+.cols1 {
+    display: table-row;
+}
+
+.col1 {
+    display: table-cell;
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+    vertical-align: top;
+    white-space: normal;
+
+}
+
+
+.placeList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+}
+
+.rowrow2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.row2 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.rows2 {
+    display: flex;
+    background-color: #f9f9f9;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+}
+
+.titlecol2 {
+    flex: 1;
+    padding: 8px;
+    text-align: center;
+    background-color: #f1f1f1;
+}
+
+.cols2 {
+    display: flex;
+    flex-direction: row;
+}
+
+.col2 {
+    flex: 1;
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.writePlaceListForm-defaultimages {
+    width: 100px;
+    height: 100px;
+}
+
+.wrtiePlaceListForm-defaultimages img {
+    width: 100px;
+    height: 100px;
+}
+
+.writePlaceListForm-btns {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.writePlaceListForm-btns button {
+    background-color: var(--black);
+    border-radius: 5px;
+    color: white;
+    width: 40%;
+    cursor: pointer;
+}
+
+.writePlaceListForm-btns button:hover {
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.textAreaRes {
+    /* width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+    overflow: auto;
+    font-family: Arial, sans-serif; */
+
+    width: 100%;
+    /* 입력 필드의 너비를 부모 요소에 맞게 조정 */
+    border: 1px solid #c9c9c9;
+    /* 테두리 스타일 추가 */
+    padding: 10px;
+    /* 내부 패딩 설정 */
+    box-sizing: border-box;
+    /* 패딩을 포함하여 너비 계산 */
+    resize: vertical;
+    /* 수직으로 크기 조정 가능 */
+}
+
+/* #imgPrev {
+    width: 230px;
+    height: 230px;
+    overflow: hidden;
+} */
+
+
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.review-write-input-update {
+    display: flex;
+    flex: 3 1;
+    align-items: center;
+    /* 세로 정렬 */
+}
+
+.review-write-input-update textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: none;
+    /* 수직으로 크기 조정 가능 */
+}
+
+
+/* 최대 600px 너비일 때 */
+@media (max-width: 600px) {
+    .writeReview {
+        width: 95%;
+        box-shadow: none;
+        padding: 10px;
+    }
+
+    .writeReview-write {
+        width: 95%;
+        box-shadow: none;
+        padding: 10px;
+    }
+
+    .btns {
+        flex-direction: column;
+    }
+
+    .btns-write {
+        flex-direction: column;
+    }
+
+    .btns button {
+        width: 100%;
+        margin-top: 10px;
+        /* 버튼 사이의 간격 */
+    }
+
+    .btns-write button {
+        width: 100%;
+        margin-top: 10px;
+        /* 버튼 사이의 간격 */
+    }
+
+    .btns button:first-child {
+        margin-top: 0;
+        /* 첫 번째 버튼에는 간격 제거 */
+    }
+}
+
+/* 최대 480px 너비일 때 */
+
+/* @media (max-width: 480px) {
+    .btns {
+        flex-direction: column;
+    }
+
+    .btns-write {
+        flex-direction: column;
+    }
+
+    .btns button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .btns-write button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .btns button:first-child {
+        margin-top: 0;
+    }
+
+
+    .review-write-input-update input,
+    .review-write-input-update textarea .textAreaRes {
+        padding: 10px;
+        font-size: 16px;
+        line-height: 1.5;
+        box-sizing: border-box;
+    }
+
+    .review-write-input-update textarea .textAreaRes {
+        height: auto;
+        min-height: 40px;
+        resize: none;
+        font-size: 11.5px;
+    }
+
+} */
+
+
+
+@media (max-width: 480px) {
+    .btns {
+        flex-direction: column;
+    }
+
+    .btns-write {
+        flex-direction: column;
+    }
+
+    .btns button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .btns-write button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .btns button:first-child {
+        margin-top: 0;
+    }
+
+    .review-write-field-update {
+        flex-direction: column;
+        /* 세로 정렬로 변경 */
+    }
+
+    .review-write-label-update {
+        flex: 1 1;
+        text-align: left;
+        /* 왼쪽 정렬 */
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .review-write-input-update {
+        flex: 1 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .review-write-input-update textarea {
+        width: 100%;
+        height: auto;
+        min-height: 40px;
+        resize: none;
+        /* 크기 조정 비활성화 */
+        font-size: 16px;
+        line-height: 1.5;
+    }
+}

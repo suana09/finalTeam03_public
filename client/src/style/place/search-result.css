@@ -1,0 +1,21 @@
+.search-result-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.search-result-middle-container{
+    display: flex;
+    height: calc(100vh - 150px);
+}
+
+.search-result-mapContainer {
+    width: 100%;
+    height: calc(100vh - 150px);
+}
+
+.search-result-sidebar-container{
+    height: 100%;
+}

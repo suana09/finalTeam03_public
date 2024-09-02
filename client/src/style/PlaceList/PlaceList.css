@@ -1,0 +1,284 @@
+.placelist-main {
+    width: 100vw;
+    overflow-x: hidden;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.placelist-main-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.placelist-main-inner-container {
+    width: 100%;
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.placelist-sidebar {
+
+}
+
+.selectedPlace {
+    width: 100%;
+    height: 125px;
+    border-bottom: 1px solid #cbcbcb;
+    margin: 15px;
+}
+
+.selectedPlaceDetails {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selectedPlaceDetails p {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.selectedPlaceDetails button {
+    margin-left: 10px;
+}
+
+/* 맛집 지도 리스트 */
+.placeList {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow-y: auto;
+}
+
+
+.placeList ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.placeItem {
+
+}
+
+.placeItem:hover {
+    background-color: #ffcccc;
+    /* 호버 시 색상 변경 */
+}
+
+.placeItem.selected {
+    background-color: #ff5252;
+    color: white;
+}
+
+/* 검색 입력 필드 */
+.searchContainer {
+    margin-bottom: 20px;
+}
+
+.searchContainer input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.searchButton {
+    background-color: #b3e5fc;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.searchButton:hover {
+    background-color: #81d4fa;
+    transition: 0.3s;
+}
+
+.searchButton:active {
+    background-color: #4fc3f7;
+}
+
+/* 지도표시, 맛집 목록 화면 */
+.mainContent {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.placelist-middle-container {
+    flex-grow: 1;
+    width: calc(100% - 450px);
+    height: calc(100vh - 100px);
+    padding: 10px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.placelist-map-container {
+    height: 70%;
+}
+
+
+
+
+/* 미디어 쿼리 예시: 작은 화면에 대응 */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        /* 작은 화면에서는 사이드바가 전체 너비를 차지하도록 설정 */
+        height: auto;
+        /* 높이 자동 조정 */
+    }
+
+    .container {
+        flex-direction: column;
+        /* 컨테이너를 세로로 정렬 */
+    }
+
+    .mainContent {
+        width: 100%;
+        /* 메인 콘텐츠도 전체 너비를 차지하도록 설정 */
+        height: auto;
+        /* 높이 자동 조정 */
+    }
+
+    .kakaoMap {
+        height: 300px;
+        /* 작은 화면에서 지도 높이 조정 */
+    }
+
+    .placelist-place-container {
+        max-height: calc(100vh - 320px);
+        /* 화면 높이에서 지도 영역을 뺀 높이로 설정 */
+    }
+}
+
+
+.placelist-place-container {
+    height: 35%;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-height: calc(100vh - 420px);
+    overflow: hidden;
+    display: flex;
+}
+
+.placelist-place-middle-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.placelist-place-container-title{
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.placelist-place-slider {
+    height: 100%;
+    white-space: nowrap;
+    padding: 10px 0;
+    display: flex;
+}
+
+.placelist-place-cards {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    height: 200px;
+    height: 100%;
+    justify-content: center;
+}
+
+.placelist-place-card {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 22%;
+    height: 100%;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.placelist-place-card:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+.placelist-place-card-image {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.placelist-place-card-image img{
+    width: 100%;
+}
+
+.placelist-place-card-name {
+    font-size: 13px;
+    color: #333333;
+    margin: 2px 0;
+}
+
+.placelist-place-card-btn {
+    height: 20px;
+}
+
+.placelist-place-card-btn button {
+    height: 20px;
+    font-size: 11px;
+    line-height: 13px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.placelist-placeslider-pagebtn{
+    height: 100%;
+    background: none;
+    display: flex;
+    align-items: center;
+}
+
+.placelist-placeslider-pagebtn button{
+    width: 30px;
+    height: 30px;
+    background: none;
+    outline: none;
+    border: none;
+    position: relative;
+}
+
+.placelist-placeslider-pagebtn button img{
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

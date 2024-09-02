@@ -1,0 +1,81 @@
+/* FilterPopup.css */
+
+.main-popup{
+        position: absolute;
+        width: 70%;
+        top: 100%; 
+        left: 200px;
+        padding: 10px;
+        background-Color: ivory;
+        color: black;
+        border: 1px solid black;
+        border-Radius: 4px;
+        margin-Top: 10px;
+        white-Space: nowrap;
+        z-Index: 1000;
+}
+
+/* 메인 검색기능 영역 */
+.main-bottom {
+        height: 450px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        flex-grow: 1;
+        justify-content: center;
+}
+
+/* Best 10 맛플리 css 이동 */
+.bestPlaceList10 {
+        height: 700px;
+        background-color: #FFF7CD;
+        padding: 50px;
+        text-align: center;
+        flex-grow: 1;
+        display: flex;
+    justify-content: center;
+}
+.main-best10-container-box{
+        width: 1000px;
+        height: 400px;
+        padding: 0 20px;
+        position: relative;
+}
+    
+.main-best10-text h1 {
+        color: #2A56B6;
+        margin-bottom: 70px;
+        font-size: 40px;
+}
+    
+.main-cards-container {
+        display: flex;
+        overflow-x: auto;
+        justify-content: center;
+        gap: 20px;
+        padding: 70px;
+}
+    
+.main-card {
+        background-color: #ffffff;
+        border-radius: 8px;
+        width: 300px;
+        text-align: center;
+        padding: 1px;
+        flex: none;
+}
+    
+.card-image {
+        background-color: #eeeeee;
+        height: 300px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+}
+    
+.card-text {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        padding: 20px;
+}

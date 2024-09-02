@@ -1,0 +1,55 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    overflow-x: hidden;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+:root {
+    --primary-color: #2a56b6;
+    --secondary-color: #ffed85;
+    --star-fill-color: #ffd000;
+    --white: #FFFFFF;
+    --black: #000000;
+    --cream: #FFF7CD;
+    --light-gray: #dddddd;
+    --gray: #bdbdbd;
+    --btn-gray: #adadad;
+    --btn-gray-hover: #4e4e4e;
+    --green: #5bc75b;
+    --red: #ed3d3d;
+}
+
+::-webkit-scrollbar {
+    width: 15px;  /* 세로축 스크롤바 폭 너비 */
+    height: 20px;  /* 가로축 스크롤바 폭 너비 */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-color); /* 스크롤바 막대 */
+    border: 1px solid var(--primary-color);
+     /* 스크롤바 테두리 */
+    border-radius: 5px 5px 5px 5px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--white); /* 스크롤바 배경 */
+}
+
+/* ::-webkit-scrollbar-thumb { */
+    /* background: var(--light-gray); 스크롤바 막대 */
+    /* border: 1px solid var(--btn-gray-hover); */
+     /* 스크롤바 테두리 */
+    /* border-radius: 5px 5px 5px 5px; 
+} */
+
+/* ::-webkit-scrollbar-track { */
+	/* background: var(--white); 스크롤바 배경 */
+/* } */

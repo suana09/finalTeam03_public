@@ -1,0 +1,476 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    height: 100px;
+    z-index: 51;
+    /* 헤더를 상단에 위치시키기 위해 z-index 추가 */
+    position: relative;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.nav {
+    display: flex;
+    gap: 50px;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.nav-link,
+.logout-button,
+.login-button,
+.join-button {
+    text-decoration: none;
+    color: #2A56B6;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    color: #2A56B6;
+    transition: 0.3s;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    /* margin-right: 30px; */
+}
+
+.nickname {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+
+/* 메인페이지 */
+.banner {
+    background-color: Var(--secondary-color);
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -20px;
+    height: 600px;
+}
+
+.slider-container {
+    position: relative;
+    max-width: 500px;
+    flex: 1;
+    overflow: hidden;
+    /* 슬라이더 범위 밖의 이미지 숨김 */
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    height: 550px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.slide img {
+    height: 600px;
+    display: block;
+}
+
+.banner .image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.banner .image img {
+    width: 500px;
+    height: auto;
+}
+
+/* 푸터 */
+.footer {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 70px 10px;
+    position: relative;
+    min-height: 150px;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1200px;
+    /* 최대 너비 설정 */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.footer-logo-img {
+    width: 300px;
+}
+
+.footer-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.company-info,
+.contact-us {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.company-info h3,
+.contact-us h3 {
+    margin-top: 0;
+}
+
+.footer-links {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    background-color: var(--primary-color); 
+    font-size: 13px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icon {
+    width: 18px; 
+    object-fit: contain;
+}
+
+/* 전체 페이지를 감싸는 컨테이너 */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* 화면 높이에 맞춰서 푸터가 항상 하단에 위치하도록 */
+}
+
+
+
+/* 미디어쿼리 */
+/* 작은 화면 (모바일) */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 10px;
+    }
+
+    .logo img {
+        width: 150px;
+        /* 로고 크기 축소 */
+        margin-top: -50px;
+        margin-bottom: -50px;
+    }
+
+    .header-content {
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .nav {
+        flex-direction: row;
+        gap: 10px;
+        width: 900px;
+        align-items: center;
+    }
+
+    .nav-link,
+    .login-button,
+    .join-button {
+        font-size: 13px;
+    }
+
+    .user-info {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
+    }
+
+    .banner {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        margin-top: 0;
+        align-items: center;
+    }
+
+    .banner .image img {
+        width: 100%;
+        height: auto;
+    }
+
+    .slider-container {
+        max-width: 100%;
+    }
+
+    .main-bottom {
+        height: auto;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .bestPlaceList10 {
+        height: auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .main-cards-container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .main-card {
+        width: 100%;
+    }
+
+    .footer{
+        padding: 40px 10px;
+    }
+    .footer-logo {
+        margin-top: -50px;
+        margin-bottom: -50px;
+    }
+
+    .footer-logo-img {
+        width: 150px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-details {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-links a {
+        font-size: 13px;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        position: static;
+        font-size: 10px;
+    }
+
+    .company-info,
+    .contact-us {
+        align-items: center;
+        font-size: 14px;
+    }
+}
+
+/* 중간 화면 (태블릿) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .header {
+        padding: 10px 20px;
+    }
+
+    .logo img {
+        width: 180px;
+    }
+
+    .nav {
+        gap: 30px;
+        justify-content: center;
+    }
+
+    .user-info {
+        margin-right: 10px;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .banner {
+        padding: 30px;
+        height: auto;
+        align-items: center;
+        text-align: center;
+    }
+
+    .slider-container {
+        max-width: 400px;
+    }
+
+    .banner .image img {
+        width: 80%;
+    }
+
+    .main-bottom {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .bestPlaceList10 {
+        padding: 40px;
+        text-align: center;
+    }
+
+    .main-cards-container {
+        padding: 50px;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .main-card {
+
+        .company-info,
+        .contact-us {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        width: 250px;
+    }
+
+    .footer-content {
+        width: 100%;
+        max-width: 1200px;
+        /* 최대 너비 설정 */
+        max-width: 90%;
+        /* 최대 너비 설정 */
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .footer-details {
+        text-align: center;
+    }
+
+    .footer-logo-img {
+        width: 250px;
+    }
+}
+
+/* 큰 화면 (데스크탑) */
+@media (min-width: 1025px) {
+    .header {
+        padding: 20px;
+    }
+
+    .logo img {
+        width: 200px;
+    }
+
+    .nav {
+        gap: 50px;
+        justify-content: center;
+    }
+
+    .user-info {
+        margin-right: 30px;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .banner {
+        height: 600px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .slider-container {
+        max-width: 500px;
+    }
+
+    .banner .image img {
+        width: 500px;
+    }
+
+    .main-bottom {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .bestPlaceList10 {
+        padding: 50px;
+        text-align: center;
+    }
+
+    .main-cards-container {
+        padding: 70px;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .main-card {
+        width: 300px;
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-details {
+        text-align: center;
+    }
+
+    .footer-logo-img {
+        width: 300px;
+    }
+}
