@@ -95,10 +95,6 @@ public class PlaceService {
         if (word != null && !word.isEmpty()) {
             query.setParameter("word", "%" + word + "%");
         }
-
-        System.out.println("Generated Query: " + queryBuilder.toString());
-        System.out.println("Parameters: " + parameters);
-
         return query.getResultList();
     }
 

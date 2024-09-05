@@ -7,8 +7,8 @@ import ReviewWriteForm from '../../component/review/WriteReview';
 import AddIcon from '../../images/icons/add.png';
 import closeIcon from '../../images/icons/close.png';
 import WriteIcon from '../../images/icons/edit.png';
+import ListIcon from '../../images/icons/lists.png';
 import noimages from '../../images/noimages.png';
-import ListIcon from '../../images/icons/lists.png'
 import '../../style/place/detailinfo.css';
 import authAxios from '../../util/jwtUtil';
 
@@ -22,6 +22,7 @@ function DetailInfo({ place, onClose, selectedListId, onPlaceChange }) {
     const [isWriteReviewOpen, setIsWriteReviewOpen] = useState(false);
     const [isBasicInfoOpen, setIsBasicInfoOpen] = useState(true);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     const [currentPlace, setCurrentPlace] = useState({});
     const [myLists, setMyLists] = useState([]);
@@ -64,6 +65,27 @@ function DetailInfo({ place, onClose, selectedListId, onPlaceChange }) {
                 console.error(err);
             });
     }, [placeId]);
+
+    useEffect(() => {
+        const updateSlidesToShow = () => {
+            if (window.innerWidth <= 480) {
+                setIsMobile(true);
+
+            } else {
+                setIsMobile(false);
+            }
+        };
+
+        window.addEventListener('resize', updateSlidesToShow);
+
+        // 컴포넌트가 마운트될 때 초기 설정
+        updateSlidesToShow();
+
+        // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거.
+        return () => {
+            window.removeEventListener('resize', updateSlidesToShow);
+        };
+    }, []);
 
     useEffect(() => {
         axios.get(`/api/place`, { params: { placeId } })
@@ -253,10 +275,10 @@ function DetailInfo({ place, onClose, selectedListId, onPlaceChange }) {
                 writer: loginUser.email
             }
         })
-            .then((res) => {
-                document.querySelector("#mylistbox").style.display = 'block';
-                setMyLists(res.data);
-            });
+        .then((res) => {
+            document.querySelector("#mylistbox").style.display = 'block';
+            setMyLists(res.data);
+        });
     }
 
 
@@ -343,6 +365,10 @@ function DetailInfo({ place, onClose, selectedListId, onPlaceChange }) {
         );
     };
 
+    const closeMyLists = ()=>{
+        document.querySelector("#mylistbox").style.display = 'none';
+    }
+
 
 
 
@@ -380,7 +406,7 @@ function DetailInfo({ place, onClose, selectedListId, onPlaceChange }) {
                                         <div className='detailinfo-mylists-item-name'>{item.listName}</div>
                                         <div className='detailinfo-mylists-item-image'>
                                             <div className='detailinfo-mylists-item-imageoverlay'></div>
-                                            <img src={`/api/images/${item.image}`} alt="" />
+                                            <img src={item.image} alt="" />
                                             <button className='detailinfo-mylists-item-addbtn' onClick={() => addPlaceToList(item.id)}>
                                                 <img src={AddIcon} alt='' />
                                             </button>
@@ -390,8 +416,14 @@ function DetailInfo({ place, onClose, selectedListId, onPlaceChange }) {
                             </div>
 
                             {addPlaceListFormRef.current && addPlaceListFormRef.current.style.display === 'block' ? null : (
-                                <div className='detailinfo-mylists-pliaddbtn' onClick={addPlaceLists}>
-                                    <button>새 맛플리 생성하기</button>
+                                <div className='detailinfo-mylists-pliaddbtn' >
+                                    <button onClick={()=>{addPlaceLists()}}> 새 맛플리 생성하기</button>
+                                    {
+                                        isMobile && (
+                                            <>&nbsp;
+                                            <button onClick={()=>{closeMyLists()}}>닫기</button></>
+                                        )
+                                    }
                                 </div>
                             )}
                         </div>
@@ -597,7 +629,7 @@ function DetailInfo({ place, onClose, selectedListId, onPlaceChange }) {
                                                                             </div>
                                                                         </div>
                                                                         <div className='detailinfo-reviewlists-image'>
-                                                                            <img src={`${review.savefilename}`} alt="" />
+                                                                            <img src={review.savefilename} alt="" />
                                                                         </div>
                                                                     </div>
                                                                 )

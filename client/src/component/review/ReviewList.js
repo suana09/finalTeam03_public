@@ -8,34 +8,27 @@ import Header from '../HeaderFooter/Header';
 
 function ReviewSelect() {
     const navigate = useNavigate();
-    const [totalReviews, setTotalReviews] = useState();
-    const [reviewImages, setReviewImages] = useState({});
-    const [reviewIds, setReviewIds] = useState([]);
-    const [hoveredReviewId, setHoveredReviewId] = useState(null);
-    const [reviewDetails, setReviewDetails] = useState({});
+    const [reviews, setReviews] = useState([]);
+    const [reviewCounts, setReviewCounts] = useState(0);
     const loginUser = useSelector(state => state.user);
+    const [reviewDetailClass, setReviewDetailClass] = useState('review-details');
+    const [isScrollable, setIsScrollable] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await authAxios.get("/api/review/reviewList", { params: { writer: loginUser.email } });
+                const result = await authAxios.get("/api/review/my", { params: { writer: loginUser.email } });
+
 
                 if (!loginUser) {
                     window.alert("로그인이 필요한 서비스입니다.");
                     navigate("/login");
                 }
 
-                setTotalReviews(result.data.totalReviews);
-                setReviewImages(result.data.reviewImages);
-                setReviewIds(result.data.reviewIds);
-
-                if (result.data.reviewIds.length > 0) {
-                    const reviews = {};
-                    for (const id of result.data.reviewIds) {
-                        const res = await authAxios.get(`/api/review/reviewDetail/${id}`);
-                        reviews[id] = res.data.review;
-                    }
-                    setReviewDetails(reviews);
+                setReviews(result.data.reviewList);
+                setReviewCounts(result.data.reviewList.length);
+                if (result.data.reviewList.length > 6) {
+                    setIsScrollable(true);
                 }
             } catch (err) {
                 console.error(err);
@@ -46,54 +39,85 @@ function ReviewSelect() {
     }, [loginUser, navigate]);
 
     useEffect(() => {
-        if (hoveredReviewId != null && reviewDetails[hoveredReviewId]) {
-            const reviewDetail = reviewDetails[hoveredReviewId];
-            console.log(reviewDetail);
-        }
-    }, [hoveredReviewId, reviewDetails]);
+        const handleResize = () => {
+            reviewDetailsToggle(0);
+        };
 
-    const isScrollable = reviewIds.length >= 7;
+        // 이벤트 리스너 추가
+        window.addEventListener('resize', handleResize);
+
+        // cleanup 함수: 이벤트 리스너 제거
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []); // 빈 배열로 설정하면 컴포넌트가 마운트 및 언마운트 될 때만 실행됨
+
+
+    const reviewDetailsToggle = (id) => {
+
+        let isInMobile = false;
+
+        if (window && window.innerWidth <= 768) {
+            isInMobile = true;
+        }
+
+        if (isInMobile) {
+            setReviewDetailClass('review-details review-details-selected');
+        } else {
+            setReviewDetailClass('review-details');
+        }
+    }
 
     return (
         <div className="page-container">
             <Header />
+
+
+
             <article className="content-wrap">
                 <div className='review-list'>
                     <div className='review-totalcount'>
-                        {totalReviews ? (<div>내가 쓴 리뷰 (총 {totalReviews}개)</div>) : (<div>리뷰가 존재하지 않습니다.</div>)}
-                    </div>
-                    <div
-                        className={`review-image-grid ${isScrollable ? 'scrollable' : ''}`}
-                    >
                         {
-                            reviewIds.map((id) => (
-                                <div
-                                    key={id}
-                                    className='review-image-container'
-                                    onMouseEnter={() => setHoveredReviewId(id)}
-                                    onMouseLeave={() => setHoveredReviewId(null)}
-                                    onClick={() => { navigate(`/reviewDetail/${id}`) }}
-                                >
-                                    <img
-                                        src={`${reviewImages[id]}`}
-                                        alt={`Review ${id}`}
-                                        className="review-image"
-                                    />
-                                    { // 마우스 커서를 올렸을 때의 그 해당 이미지의 id랑 리뷰리스트에서 끌고 온 해당 id가 같고, 뷰에서 리뷰 id를 끌고 와서 그 행과 같으면
-                                        // 그 리뷰id에 맞는 행의 pname과 content 추출
-                                        (hoveredReviewId === id && reviewDetails[id]) && (
-                                            <div className="review-details">
-                                                <p>{reviewDetails[id].pname}</p>
-                                                <p>{reviewDetails[id].content}</p>
-                                            </div>
-                                        )
-                                    }
-                                </div>
-                            ))
+                            (reviewCounts > 0) ?
+                            (<div> 내가 쓴 리뷰 (총 {reviewCounts}개) </div>) :
+                            (<div> 리뷰가 존재하지 않습니다. </div>)
                         }
                     </div>
+                    {
+                        (reviews && reviews.length > 0) && (
+                            <div
+                                className={`review-image-grid ${isScrollable ? 'scrollable' : ''}`}
+                            >
+                                {
+                                    reviews.map((review, idx) => (
+                                        <div
+                                            key={review.reviewId}
+                                            className='review-image-container'
+                                            onMouseEnter={() => reviewDetailsToggle(review.reviewId)}
+                                            onClick={() => { navigate(`/reviewDetail/${review.reviewId}`) }}
+                                        >
+                                            <img
+                                                src={review.savefilename}
+                                                alt=''
+                                                className="review-image"
+                                            />
+                                            {/* {'review-details ' + (hoveredReviewId === id && reviewDetails[id]) && ('review-details-selected')} */}
+
+                                            <div className={reviewDetailClass}>
+                                                <p>{review.pname}</p>
+                                                <p>{review.content}</p>
+                                            </div>
+
+
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        )
+                    }
                 </div>
             </article>
+
             <Footer />
         </div>
     );

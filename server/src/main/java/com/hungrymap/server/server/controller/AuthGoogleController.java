@@ -88,7 +88,7 @@ public class AuthGoogleController {
         session.setAttribute("loginUser", member);
 
         String encodedEmail = URLEncoder.encode(member.getEmail(), StandardCharsets.UTF_8.toString());
-        String redirectUrl = "http://localhost:3000/googlesaveinfo/" + encodedEmail;
+        String redirectUrl = "https://matchive.site/googlesaveinfo/" + encodedEmail;
         response.sendRedirect(redirectUrl);
     }
 

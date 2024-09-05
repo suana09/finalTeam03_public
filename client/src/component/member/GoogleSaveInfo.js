@@ -11,6 +11,7 @@ function GoogleSaveInfo() {
 
     useEffect(() => {
         const saveUserInfo = async ()=>{
+            // member
             try {
                 const result = await axios.post('/api/auth/login', { email: email, pwd: "google"} );
 

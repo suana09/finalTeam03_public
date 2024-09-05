@@ -38,10 +38,8 @@ public class ReviewService {
         this.reviewViewRepository = reviewViewRepository;
     }
 
-    public List<Review> reviewList(String writer) {
-
-       return reviewRepository.findByWriterOrderByIdDesc(writer);
-
+    public List<ReviewView> reviewList(String writer) {
+       return reviewViewRepository.findByWriterOrderByIdDesc(writer);
     }
 
     public Place getPlace(String pname) {
@@ -135,7 +133,6 @@ public class ReviewService {
                 //플레이스 아이디로 리뷰 테이블에서 rates의 평균 조회 select avg(rates) from review where placeid=?
                 //위에서 가져온 평균값으로 place 테이블의 해당 id를 가진 레코드의 avgrates 를 update
                 Float reviewPlaceIdAvg = reviewRepository.findByPlaceId(placeId);
-                System.out.println("reviewPlaceIdAvg = " + reviewPlaceIdAvg);
                 place1.setAvgRates(reviewPlaceIdAvg);
                 placeRepository.save(place1);
             }
@@ -146,18 +143,14 @@ public class ReviewService {
     public List<Place> placeList(String word) {
         List<Place> places = placeRepository.findByPnameOrderByIdDesc(word);
 
-        System.out.println("searchList : " + places);
         return places;
     }
 
     public void reviewCounts(String placeId) {
         int originalCounts = reviewRepository.getReviewCountById(placeId);
-        System.out.println("originalCounts = " + originalCounts);
         Optional<Place> result = placeRepository.findById(placeId);
         Place originalPlace = result.orElse(null);
-        System.out.println("originalPlace = " + originalPlace);
         originalPlace.setReviewCount(originalCounts);
-        System.out.println("updated originalPlace = " + originalPlace);
         placeRepository.save(originalPlace);
     }
 

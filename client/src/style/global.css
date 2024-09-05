@@ -43,13 +43,15 @@ html, body, #root {
 	background: var(--white); /* 스크롤바 배경 */
 }
 
-/* ::-webkit-scrollbar-thumb { */
-    /* background: var(--light-gray); 스크롤바 막대 */
-    /* border: 1px solid var(--btn-gray-hover); */
-     /* 스크롤바 테두리 */
-    /* border-radius: 5px 5px 5px 5px; 
-} */
 
-/* ::-webkit-scrollbar-track { */
-	/* background: var(--white); 스크롤바 배경 */
-/* } */
+::-webkit-scrollbar {
+    width: 15px;  /* 세로축 스크롤바 폭 너비 */
+    height: 20px;  /* 가로축 스크롤바 폭 너비 */
+}
+
+@media (max-width: 480px) {
+    ::-webkit-scrollbar {
+        width: 10px;  /* 세로축 스크롤바 폭 너비 */
+        height: 15px;  /* 가로축 스크롤바 폭 너비 */
+    }
+}

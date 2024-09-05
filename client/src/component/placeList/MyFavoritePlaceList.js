@@ -7,6 +7,7 @@ import authAxios from '../../util/jwtUtil';
 import Header from '../HeaderFooter/Header';
 import MapComponent from '../map/MapComponent';
 import PlaceListSideBar from './PlaceListSideBar';
+import Sidebar from '../HeaderFooter/Sidebar';
 
 import prevIcon from '../../images/icons/arrow-prev.png'
 import nextIcon from '../../images/icons/arrow-next.png'
@@ -24,10 +25,16 @@ function MyFavoritePlaceList() {
     const [selectedPlace, setSelectedPlace] = useState(null);
     const [placeListChange, setPlaceListChange] = useState(false);
     const [placeChange, setPlaceChange] = useState(false);
+    const [isPliSbVisible, setIsPliSbVisible] = useState(false);
+    const [isListVisible, setIsListVisible] = useState(true);
+    const [isMobile, setIsMobile] = useState(false);
 
     const [placePage, setPlacePage] = useState(0);
     const [isPrevAble, setIsPrevAble] = useState(false);
     const [isNextAble, setIsNextAble] = useState(false);
+
+    const [startX, setStartX] = useState(0);
+    const [endX, setEndX] = useState(0);
 
     const navigate = useNavigate();
 
@@ -51,6 +58,9 @@ function MyFavoritePlaceList() {
                     const results = response.data;
                     setSelectedList(results[0]);
                     setSelectedListId(results[0].id);
+                } else {
+                    alert("즐겨찾기 된 맛플리가 없어요 💧");
+                    navigate('/');
                 }
             })
             .catch(error => {
@@ -61,7 +71,7 @@ function MyFavoritePlaceList() {
     // 맛집 목록 가져오기
     useEffect(() => {
         if (selectedListId !== null) {
-            authAxios.get(`/api/placelist/place/${selectedListId}`)
+            authAxios.get(`/api/placelist/place/${selectedListId}`, { params: {page:placePage, size: isMobile ? 1 : 4 } })
                 .then(response => {
                     const places = response.data.content;
                     const mapped = places.map(restaurant => ({
@@ -84,6 +94,27 @@ function MyFavoritePlaceList() {
                 });
         }
     }, [selectedListId, placeChange]);
+
+    useEffect(() => {
+        const updateSlidesToShow = () => {
+            if (window.innerWidth <= 480) {
+                setIsMobile(true);
+
+            } else {
+                setIsMobile(false);
+            }
+        };
+
+        window.addEventListener('resize', updateSlidesToShow);
+
+        // 컴포넌트가 마운트될 때 초기 설정
+        updateSlidesToShow();
+
+        // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거.
+        return () => {
+            window.removeEventListener('resize', updateSlidesToShow);
+        };
+    }, []);
 
     // 리스트 사이드바에서 선택된 리스트를 전달받기 위한 콜백 함수
     const handleSelectPlaceList = (list) => {
@@ -141,21 +172,97 @@ function MyFavoritePlaceList() {
         setPlacePage(prevPage => prevPage + 1);
     }
 
+    const togglePliSideBar = (param) => {
+        if (param !== undefined) {
+            setIsPliSbVisible(param);
+        } else {
+            setIsPliSbVisible(!isPliSbVisible);
+        }
+    }
+
+    // 모바일 사이드패널 swipe 
+    const handleTouchStart = (e) => {
+        setStartX(e.touches[0].clientX);
+    };
+
+    const handleTouchMove = (e) => {
+        setEndX(e.touches[0].clientX);
+    };
+
+    const handleTouchEnd = () => {
+        if (endX - startX > 20) {
+            togglePliSideBar();
+        }
+    };
+
+    const togglePliSlider = () => {
+        setIsListVisible(!isListVisible);
+    }
+
+    const handleChangePsbVisibility = () => {
+        if (isMobile) {
+            togglePliSideBar(false);
+        }
+    }
+
+    const handlePlaceSliderVisibility = (param) => {
+        if (isMobile) {
+            if (param !== undefined) {
+                setIsListVisible(param);
+            } else {
+                setIsListVisible(!isListVisible);
+            }
+        }
+    }
+
+
 
     return (
         <div className='placelist-main'>
             <div className='placelist-main-container'>
-                <Header />
+                {
+                    (!isMobile) && (
+                        <Header />
+                    )
+                }
                 <div className="placelist-main-inner-container">
                     {placeLists && (
                         <PlaceListSideBar
                             myLists={placeLists}
                             onSelectPlaceList={handleSelectPlaceList}
                             onChangePlaceList={handleChangePlaceList}
+                            sbVisiablityByToggle={isPliSbVisible}
+                            onChangePliSbVisibility={handleChangePsbVisibility}
                         />
                     )}
                     <div className="placelist-middle-container">
-                        <div className='placelist-map-container' style={{ height: "75%" }}>
+                        <div className='placelist-upper-container' style={{justifyContent:"flex-end"}}>
+                            {
+                                (isMobile) && (
+                                    <Sidebar />
+                                )
+                            }
+                        </div>
+                        <div className='placelist-place-selecteplace-banner'>
+                            {
+                                (selectedList && selectedList.listName) && (
+                                    <>나의 즐겨찾기&nbsp;&nbsp;&gt;&nbsp;&nbsp;{selectedList.listName}</>
+                                )
+                            }
+                        </div>
+                        <div className='placelist-map-container' style={{ height: `${isMobile ? isListVisible ? "70%" : "100%" : "75%"}` }}>
+                            {
+                                (isMobile) && (
+                                    <div className='placelist-placelist-panelbtn'
+                                        onClick={() => { togglePliSideBar() }}
+                                        onTouchStart={handleTouchStart}
+                                        onTouchMove={handleTouchMove}
+                                        onTouchEnd={handleTouchEnd}
+                                    >
+                                        <img src={nextIcon} alt="" />
+                                    </div>
+                                )
+                            }
                             {(mappedRestaurants.length > 0) ? (
                                 <MapComponent
                                     className='search-result-kakaomap'
@@ -164,56 +271,59 @@ function MyFavoritePlaceList() {
                                     selectedPlace={selectedPlace}
                                     selectedListId={selectedListId}
                                     onChangePlace={handleChanglePlace}
+                                    onChangePlaceSliderVisibility={handlePlaceSliderVisibility}
                                 />
                             ) : null}
-                            <div className="placelist-place-container">
-                                <div className='placelist-placeslider-pagebtn'>
-                                    <button onClick={handlePlaceSliderPrev} disabled={!isPrevAble}>
-                                        <img src={prevIcon} alt="" style={{ opacity: isPrevAble ? 1 : 0.2 }} />
-                                    </button>
-                                </div>
-                                <div className='placelist-place-middle-container'>
-                                    <div className='placelist-place-container-title'>
-                                        선택중인 맛플리에 저장된 장소들 🗺️
+                            {(isListVisible) && (
+                                <div className="placelist-place-container">
+                                    <div className='placelist-placeslider-pagebtn'>
+                                        <button onClick={handlePlaceSliderPrev} disabled={!isPrevAble}>
+                                            <img src={prevIcon} alt="" style={{ opacity: isPrevAble ? 1 : 0.2 }} />
+                                        </button>
                                     </div>
-                                    <div className="placelist-place-slider">
-                                        {restaurants.length > 0 ? (
-                                            <div className="placelist-place-cards">
-                                                {restaurants.map((restaurant, idx) => (
-                                                    <div className="placelist-place-card" key={restaurant.id - 1} onClick={() => handleSelectPlaceCard({
-                                                        place_id: restaurant.id,
-                                                        place_name: restaurant.pname,
-                                                        x: parseFloat(restaurant.longitude),
-                                                        y: parseFloat(restaurant.latitude),
-                                                        address_name: restaurant.address,
-                                                        category_name: restaurant.categoryName,
-                                                    })}>
-                                                        <div className='placelist-place-card-image'>
-                                                            <img src={`${(restaurant.image !== '') ? (restaurant.image) : ('/api/images/noimages.png')}`} alt="" />
+                                    <div className='placelist-place-middle-container'>
+                                        <div className='placelist-place-container-title'>
+                                            선택중인 맛플리에 저장된 장소들 🗺️
+                                        </div>
+                                        <div className="placelist-place-slider">
+                                            {restaurants.length > 0 ? (
+                                                <div className="placelist-place-cards">
+                                                    {restaurants.map((restaurant, idx) => (
+                                                        <div className="placelist-place-card" key={restaurant.id - 1} onClick={() => handleSelectPlaceCard({
+                                                            place_id: restaurant.id,
+                                                            place_name: restaurant.pname,
+                                                            x: parseFloat(restaurant.longitude),
+                                                            y: parseFloat(restaurant.latitude),
+                                                            address_name: restaurant.address,
+                                                            category_name: restaurant.categoryName,
+                                                        })}>
+                                                            <div className='placelist-place-card-image'>
+                                                                <img src={`${(restaurant.image !== '') ? (restaurant.image) : ('/api/images/noimages.png')}`} alt="" />
+                                                            </div>
+                                                            <div className="placelist-place-card-name">{restaurant.pname}</div>
+                                                            <div className="placelist-place-card-btn">
+                                                                {
+                                                                    (selectedList.writer === loginUser.email) && (
+                                                                        <button onClick={(e) => handleDeleteClick(e, selectedListId, restaurant.id)}>삭제
+                                                                        </button>
+                                                                    )
+                                                                }
+                                                            </div>
                                                         </div>
-                                                        <div className="placelist-place-card-name">{restaurant.pname}</div>
-                                                        <div className="placelist-place-card-btn">
-                                                            {
-                                                                (selectedList.writer === loginUser.email) && (
-                                                                    <button onClick={(e) => handleDeleteClick(e, selectedListId, restaurant.id)}>삭제
-                                                                    </button>
-                                                                )
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        ) : (
-                                            <p>맛집 목록이 없습니다.</p>
-                                        )}
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                <p>맛집 목록이 없습니다.</p>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div className='placelist-placeslider-pagebtn'>
+                                        <button onClick={handlePlaceSliderNext} disabled={!isNextAble}>
+                                            <img src={nextIcon} alt="" style={{ opacity: isNextAble ? 1 : 0.2 }} />
+                                        </button>
                                     </div>
                                 </div>
-                                <div className='placelist-placeslider-pagebtn'>
-                                    <button onClick={handlePlaceSliderNext} disabled={!isNextAble}>
-                                        <img src={nextIcon} alt="" style={{ opacity: isNextAble ? 1 : 0.2 }} />
-                                    </button>
-                                </div>
-                            </div>
+                            )}
                         </div>
                     </div>
                 </div>

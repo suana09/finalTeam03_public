@@ -7,7 +7,7 @@ import '../../style/member/ProfileEdit.css';
 import authAxios from '../../util/jwtUtil';
 import Footer from '../HeaderFooter/Footer';
 import Header from '../HeaderFooter/Header';
-
+// membersdfnn
 
 function ProfileEdit() {
     const [email, setEmail] = useState('');
@@ -33,6 +33,9 @@ function ProfileEdit() {
             setEmail(loginUser.email);
             setNickname(loginUser.nickname);
             setProvider(loginUser.provider);
+        } else {
+            alert("로그인이 필요한 서비스입니다 💧");
+            navigate('/login');
         }
     }, [loginUser.email, loginUser.nickname, loginUser.provider])
 

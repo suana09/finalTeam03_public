@@ -17,56 +17,78 @@ import PlateIcon from '../../images/icons/platesemoji.png';
 import SearchIcon from '../../images/icons/search.png';
 
 function MatplSearchPage() {
+    const [slidesToShow, setSlidesToShow] = useState(3); 
+    const [searchKeyword, setSearchKeyword] = useState('');
+    const [hotplis, setHotplis] = useState([]);
+    const navigate = useNavigate();
 
-    useEffect(()=>{
+    useEffect(() => {
         document.querySelectorAll('input, textarea').forEach((element) => {
             element.setAttribute('spellcheck', 'false');
         });
     }, [])
-    
+
     const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
         <button
             {...props}
-            className={
-                "custom-slick-arrow custom-slick-prev" +
-                (currentSlide === 0 ? " slick-disabled" : "")
-            }
-            aria-hidden="true"
-            aria-disabled={currentSlide === 0 ? true : false}
+            className="custom-slick-arrow custom-slick-prev"
             type="button"
         >
-            <img src={prevArrow} alt="" />
+            <img src={prevArrow} alt="Previous" />
         </button>
     );
+    
     const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
         <button
             {...props}
-            className={
-                "custom-slick-arrow custom-slick-next" +
-                (currentSlide === slideCount - 1 ? " slick-disabled" : "")
-            }
-            aria-hidden="true"
-            aria-disabled={currentSlide === slideCount - 1 ? true : false}
+            className="custom-slick-arrow custom-slick-next"
             type="button"
         >
-            <img src={nextArrow} alt="" />
+            <img src={nextArrow} alt="Next" />
         </button>
     );
+
+    useEffect(() => {
+        const updateSlidesToShow = () => {
+            if (window.innerWidth <= 768) {
+                setSlidesToShow(1);
+            } else {
+                setSlidesToShow(3);
+            }
+        };
+
+        window.addEventListener('resize', updateSlidesToShow);
+
+        // 컴포넌트가 마운트될 때 초기 설정
+        updateSlidesToShow();
+
+        // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거.
+        return () => {
+            window.removeEventListener('resize', updateSlidesToShow);
+        };
+    }, []);
 
     const settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: slidesToShow,
         slidesToScroll: 1,
         prevArrow: <SlickArrowLeft />,
         nextArrow: <SlickArrowRight />,
+        responsive: [
+            {
+                breakpoint: 768, // 화면 너비가 768px 이하일 때
+                settings: {
+                    slidesToShow: 1, // 1개의 슬라이드만 보여줌.
+                    slidesToScroll: 1,
+                    infinite: true,
+                    prevArrow: <SlickArrowLeft />,
+                    nextArrow: <SlickArrowRight />,
+                }
+            }
+        ]
     };
-
-    const [searchKeyword, setSearchKeyword] = useState('');
-    const [hotplis, setHotplis] = useState([]);
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('/api/placelist/popular')
@@ -100,12 +122,12 @@ function MatplSearchPage() {
             });
     }
 
-    const navToHotplis = ()=>{
-        if (hotplis && hotplis.length > 0){
+    const navToHotplis = () => {
+        if (hotplis && hotplis.length > 0) {
             navigate('/placelistSearchresults', {
                 state: {
                     results: hotplis
-                }    
+                }
             })
         }
     }
@@ -134,7 +156,7 @@ function MatplSearchPage() {
                 </div>
                 <div className='pli-searchpage-content-container'>
                     <div className='pli-searchpage-content-container-box'>
-                        <div className='pli-searchpage-content-title' onClick={()=>{navToHotplis()}}>
+                        <div className='pli-searchpage-content-title' onClick={() => { navToHotplis() }}>
                             이런 플리는 어떠세요? <img src={PlateIcon} alt="" />
                         </div>
                         <div className='pli-searchpage-content-item-container'>
@@ -142,10 +164,10 @@ function MatplSearchPage() {
                                 {
                                     (hotplis.map((pli, idx) => {
                                         return (
-                                            <div  key={idx+1100}>
-                                                <div className='pli-serachpage-content-slider-card' onClick={()=>{navToHotplis()}}>
+                                            <div key={idx + 1100}>
+                                                <div className='pli-serachpage-content-slider-card' onClick={() => { navToHotplis() }}>
                                                     <div className='pli-searchpage-content-slider-card-img'>
-                                                        <img src={`${pli.image}`} alt="" />
+                                                        <img src={pli.image} alt="" />
                                                     </div>
                                                     <div className='pli-searpage-content-slider-card-title'>
                                                         {pli.listName}

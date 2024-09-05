@@ -1,4 +1,5 @@
 /* profileEdit.css */
+/* ??? */
 
 .pfEdit-container {
     border-radius: 40px;
@@ -68,15 +69,18 @@
 
 @media (max-width: 768px) {
     .pfEdit-container {
-        padding-top: 20px;
-        padding-bottom: 40px;
-        width: 100%;
-        text-align: center;
-        display: flex;
         flex-direction: column;
-        align-items: center;
         margin: 0 auto;
+        padding-bottom: 40px;
+        padding-top: 20px;
+        text-align: center;
+        padding-left: 0;
+        padding-right: 0;
+        align-items: center;
+        display: flex;
+        width: 300px;
     }
+    
     .pfEdit-fields {
         display: flex;
         align-items: center;
@@ -84,5 +88,9 @@
         border-bottom: 1px solid #ccc;
         justify-content: flex-start;
         margin-bottom: 30px;
+    }
+
+    .pfEdit-label {
+        font-size: 12px;
     }
 }

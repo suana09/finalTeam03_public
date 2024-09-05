@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import '../../style/member/Register.css';
 import Footer from '../HeaderFooter/Footer';
 import Header from '../HeaderFooter/Header';
-
+// member
 import '../../style/member/Login.css';
 
 function ReactivateMember() {
@@ -60,12 +60,8 @@ function ReactivateMember() {
                         return true;
                     }
                 } else if (result.isInactive === true) {
-                    if (window.confirm("해당 계정은 휴면회원으로 전환된 계정입니다. 복구를 위해 이메일 인증을 진행하시겠습니까?")) {
-                        setIsReactivating(true);
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    setIsReactivating(true);
+                    return true;
                 } else {
                     alert("입력하신 이메일에 해당하는 회원정보가 존재하지 않습니다");
                     return false;

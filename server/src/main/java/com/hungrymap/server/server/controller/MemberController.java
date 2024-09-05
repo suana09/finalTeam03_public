@@ -154,6 +154,7 @@ public class MemberController {
         }
     }
 
+//    @Scheduled(fixedDelay = 30000)
     @Scheduled(cron = "0 0 0 * * ?")
     public ResponseEntity<List<Member>> turnToInactive(){
         return ResponseEntity.status(HttpStatus.OK).body(ms.turnToInactive());

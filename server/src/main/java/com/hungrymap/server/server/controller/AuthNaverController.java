@@ -89,7 +89,7 @@ public class AuthNaverController {
         session.setAttribute("loginUser", member);
 
         String encodedEmail = URLEncoder.encode(member.getEmail(), StandardCharsets.UTF_8.toString());
-        String redirectUrl = "http://localhost:3000/naversaveinfo/" + encodedEmail;
+        String redirectUrl = "https://matchive.site/naversaveinfo/" + encodedEmail;
         response.sendRedirect(redirectUrl);
     }
 

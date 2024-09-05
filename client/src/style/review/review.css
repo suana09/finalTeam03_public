@@ -36,7 +36,7 @@
 
 
 .subPage {
-    padding: 20px;
+    padding: 50px;
     font-family: 'Arial', sans-serif;
     margin-top: -10px;
 }
@@ -366,14 +366,18 @@
     }
 
     .detailInfo-field>div {
-        margin-left: -115px;
+        margin-left: -150px;
     }
 
     .detailInfo-field0Div>div:first-child {
-        margin-left: 40px;
+        margin-left: 0px;
     }
 
     .detailInfo-field0Div>div:nth-child(2) {}
+
+    .detailInfo-field2 .star-container {
+        margin-left: -170px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -382,7 +386,7 @@
     }
 
     .detailInfo-field>div {
-        margin-left: -112px;
+        margin-left: -150px;
         margin-top: 5px;
     }
 
@@ -403,9 +407,13 @@
     }
 
     .detailInfo-field0Div>div:first-child {
-        margin-left: 40px;
+        margin-left: 1px;
     }
 
     .detailInfo-field0Div>div:nth-child(2) {}
+
+    .detailInfo-field2 .star-container {
+        margin-left: -80px;
+    }
 
 }

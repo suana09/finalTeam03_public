@@ -23,7 +23,6 @@ public class PlaceController {
 
     @PostMapping("")
     public Map<String, Object> savePlace(@RequestBody Place place) {
-        System.out.println("place = " + place);
         if (ps.getPlaceById(place.getId())){
             return Map.of("message", "alreadyExists");
         }

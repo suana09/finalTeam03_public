@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import "../../style/review/review.css";
 import authAxios from '../../util/jwtUtil';
-import "../../style/review/review.css"
-import Header from '../HeaderFooter/Header';
 import Footer from '../HeaderFooter/Footer';
+import Header from '../HeaderFooter/Header';
 
 
 function ReviewDetail() {
@@ -12,14 +12,12 @@ function ReviewDetail() {
     const navigate = useNavigate();
     const { id } = useParams();
     const [imgSrc, setImgSrc] = useState('');
-    // const [rating, setRating] = useState(review ? review.rates : 0);
-    // const [hover, setHover] = useState(0);
 
     useEffect(() => {
-        authAxios.get(`/api/review/reviewDetail/${id}`)
+        authAxios.get(`/api/review/${id}`)
             .then((result) => {
                 setReview(result.data.review);
-                setImgSrc(`${result.data.review.savefilename}`)
+                setImgSrc(result.data.review.savefilename)
             })
             .catch((err) => {
                 console.error(err);
@@ -32,7 +30,7 @@ function ReviewDetail() {
         const ans = window.confirm("정말로 해당 리뷰를 삭제하시겠습니까?");
         if (ans) {
             try {
-                const result = await authAxios.delete(`/api/review/deleteReview/${id}`);
+                const result = await authAxios.delete(`/api/review/${id}`);
                 if (result.data.message === "OK") {
                     await authAxios.put('/api/review/placeinfos', null, { params: { placeId: result.data.placeId } });
                     window.alert("삭제가 정상적으로 완료되었습니다.");

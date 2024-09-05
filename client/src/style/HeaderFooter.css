@@ -5,15 +5,19 @@
     padding: 0px 20px;
     height: 100px;
     z-index: 51;
-    /* 헤더를 상단에 위치시키기 위해 z-index 추가 */
     position: relative;
 }
 
 .header-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     flex-grow: 1;
+    width: 100%;
+}
+
+.logo {
+    margin-right: auto;
 }
 
 .nav {
@@ -44,7 +48,6 @@
 .user-info {
     display: flex;
     align-items: center;
-    /* margin-right: 30px; */
 }
 
 .nickname {
@@ -52,10 +55,8 @@
     margin-right: 10px;
 }
 
-
-/* 메인페이지 */
 .banner {
-    background-color: Var(--secondary-color);
+    background-color: var(--secondary-color);
     padding: 40px 20px;
     display: flex;
     justify-content: space-between;
@@ -69,7 +70,6 @@
     max-width: 500px;
     flex: 1;
     overflow: hidden;
-    /* 슬라이더 범위 밖의 이미지 숨김 */
 }
 
 .slider {
@@ -100,7 +100,6 @@
     height: auto;
 }
 
-/* 푸터 */
 .footer {
     background-color: var(--primary-color);
     color: #ffffff;
@@ -115,7 +114,6 @@
 .footer-content {
     width: 100%;
     max-width: 1200px;
-    /* 최대 너비 설정 */
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -148,6 +146,7 @@
 .footer-links {
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 
 .footer-links a {
@@ -181,18 +180,16 @@
     object-fit: contain;
 }
 
-/* 전체 페이지를 감싸는 컨테이너 */
 .page-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    /* 화면 높이에 맞춰서 푸터가 항상 하단에 위치하도록 */
 }
 
+.banner .text img {
+    width: 650px;
+}
 
-
-/* 미디어쿼리 */
-/* 작은 화면 (모바일) */
 @media (max-width: 768px) {
     .header {
         flex-direction: column;
@@ -203,23 +200,23 @@
 
     .logo img {
         width: 150px;
-        /* 로고 크기 축소 */
         margin-top: -50px;
-        margin-bottom: -50px;
+        margin-bottom: -45px;
     }
 
     .header-content {
-        flex-direction: row;
-        align-items: center;
-        width: 100%;
+        display: flex;
+        justify-content: flex-start;
         margin-top: 10px;
-    }
+        width: 100%;
+        flex-direction: row;
+        }
 
     .nav {
-        flex-direction: row;
         gap: 10px;
-        width: 900px;
-        align-items: center;
+        width: 100%;
+        display: none;
+        justify-content: space-around;
     }
 
     .nav-link,
@@ -275,12 +272,15 @@
         width: 100%;
     }
 
-    .footer{
+    .footer {
         padding: 40px 10px;
     }
+
     .footer-logo {
-        margin-top: -50px;
-        margin-bottom: -50px;
+    }
+
+    .banner .text img{
+        width: 400px;
     }
 
     .footer-logo-img {
@@ -300,7 +300,7 @@
     }
 
     .footer-links a {
-        font-size: 13px;
+        font-size: 10px;
     }
 
     .social-icons {
@@ -319,7 +319,6 @@
     }
 }
 
-/* 중간 화면 (태블릿) */
 @media (min-width: 769px) and (max-width: 1024px) {
     .header {
         padding: 10px 20px;
@@ -372,26 +371,15 @@
     }
 
     .main-card {
-
-        .company-info,
-        .contact-us {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
         width: 250px;
     }
 
     .footer-content {
         width: 100%;
         max-width: 1200px;
-        /* 최대 너비 설정 */
         max-width: 90%;
-        /* 최대 너비 설정 */
         display: flex;
         justify-content: space-between;
-        align-items: flex-start;
         align-items: center;
         margin-bottom: 10px;
     }
@@ -405,7 +393,6 @@
     }
 }
 
-/* 큰 화면 (데스크탑) */
 @media (min-width: 1025px) {
     .header {
         padding: 20px;

@@ -62,8 +62,8 @@ public class PlaceListController {
 
     // 리스트별 장소 조회
     @GetMapping("/place/{id}")
-    public Page<Place> getPlacesByPlaceListId(@PathVariable Integer id, @RequestParam(defaultValue = "0") int page) {
-        Pageable pageable = PageRequest.of(page, 4);
+    public Page<Place> getPlacesByPlaceListId(@PathVariable Integer id, @RequestParam(defaultValue = "0") int page, @RequestParam("size") int size) {
+        Pageable pageable = PageRequest.of(page, size);
 
         Page<PlaceStorage> placeStoragesPage  = pss.getPlacesByPlaceListId(id, pageable);
 

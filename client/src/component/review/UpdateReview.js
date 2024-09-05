@@ -19,7 +19,7 @@ function UpdateReview() {
     const navigate = useNavigate();
     const { id } = useParams();
 
-    useEffect(()=>{
+    useEffect(() => {
         document.querySelectorAll('input, textarea').forEach((element) => {
             element.setAttribute('spellcheck', 'false');
         });
@@ -27,15 +27,13 @@ function UpdateReview() {
 
     const fetchReviewData = async () => {
         try {
-            const result = await authAxios.get(`/api/review/reviewDetail/${id}`);
+            const result = await authAxios.get(`/api/review/${id}`);
             setNickname(loginUser.nickname);
             setContent(result.data.review.content);
             setPname(result.data.review.pname);
             setPlaceId(result.data.review.placeid);
-            setOldImgSrc(`http://localhost:8090/images/${result.data.review.savefilename}`);
+            setOldImgSrc(result.data.review.savefilename);
             setOldImageFilename(result.data.review.savefilename);  // 기존 이미지 파일명 저장
-
-            console.log(result.data.review);
         } catch (err) {
             console.error(err);
         }
@@ -95,11 +93,10 @@ function UpdateReview() {
                     const res = await authAxios.post('/api/file', formData);
                     savefilenames.push(res.data.savefilename);
 
-                    console.log("placeid", placeId)
                     // 리뷰 수정 요청
-                    const result = await authAxios.post('/api/review/updateReview', { id, content, rates: rating, writer: loginUser.email, placeId });
+                    const result = await authAxios.put('/api/review', { id, content, rates: rating, writer: loginUser.email, placeId });
                     if (result.data.message === "OK") {
-                        const imageResponse = await authAxios.post("/api/review/updateImages", { savefilename: res.data.savefilename, reviewId: id });
+                        const imageResponse = await authAxios.put("/api/review/images", { savefilename: res.data.savefilename, reviewId: id });
                         if (imageResponse.data.message === "OK") {
                             alert("성공적으로 리뷰 수정이 완료되었습니다.");
                             await authAxios.put('/api/review/placeinfos', null, { params: { placeId } });
@@ -115,10 +112,10 @@ function UpdateReview() {
         } else {
             // 새 이미지가 업로드되지 않은 경우 기존 이미지 파일명 사용
             try {
-                const result = await authAxios.post('/api/review/updateReview', { id, content, rates: rating, writer: loginUser.email, placeId });
+                const result = await authAxios.put('/api/review', { id, content, rates: rating, writer: loginUser.email, placeId });
                 if (result.data.message === "OK") {
                     // 리뷰 수정 요청
-                    const imageResponse = await authAxios.post("/api/review/updateImages", { savefilename: oldImageFilename, reviewId: id });
+                    const imageResponse = await authAxios.put("/api/review/images", { savefilename: oldImageFilename, reviewId: id });
                     if (imageResponse.data.message === "OK") {
                         alert("성공적으로 리뷰 수정이 완료되었습니다.");
                         await authAxios.put('/api/review/placeinfos', null, { params: { placeId } });
@@ -183,8 +180,8 @@ function UpdateReview() {
                                     value={content}
                                     onChange={(e) => setContent(e.currentTarget.value)}
                                     placeholder='내용을 입력해주세요...'
-                                    rows="4"
-                                    cols="70"
+                                    // rows="4"
+                                    // cols="70"
                                     className='textAreaRes'
                                 ></textarea>
                             </div>
@@ -200,7 +197,7 @@ function UpdateReview() {
                             <div className='review-write-label-update'>이미지</div>
                             <div id="imgPrev" className='review-write-field-updateimgprev'>
                                 {oldImgSrc && (
-                                    <div>
+                                    <div className='review-write-field-imgbox'>
                                         <img src={oldImgSrc} alt="기존 이미지" />
                                     </div>
                                 )}

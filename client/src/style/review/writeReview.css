@@ -29,7 +29,7 @@
     margin: auto;
     padding: 20px;
     background-color: #FFFFFF;
-    margin-top: 110px;
+    /* margin-top: 110px; */
     border-radius: 15px 15px 15px 15px;
     position: relative;
     justify-content: center;
@@ -54,7 +54,7 @@
 
 
 .writeReviewUpdate {
-    width: 100%;
+    width: 500px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -115,7 +115,6 @@
 
 .review-write-container {
     margin-top: 50px;
-    margin-left: 20px;
 }
 
 .review-write-container>h2 {
@@ -124,7 +123,6 @@
 
 .review-write-container-write {
     margin-top: 50px;
-    margin-left: 20px;
 }
 
 .review-write-container-write>h2 {
@@ -134,7 +132,6 @@
 
 .review-write-container-update {
     margin-top: 50px;
-    margin-left: 20px;
 }
 
 .review-write-container-update>h2 {
@@ -213,7 +210,6 @@
 
 .review-write-label {
     flex: 1 1;
-    text-align: center;
     font-weight: bold;
     font-size: 14px;
     display: flex;
@@ -223,7 +219,6 @@
 
 .review-write-label-write {
     flex: 1 1;
-    text-align: center;
     font-weight: bold;
     font-size: 14px;
     display: flex;
@@ -232,7 +227,6 @@
 
 .review-write-label-update {
     flex: 1 1;
-    text-align: center;
     font-weight: bold;
     font-size: 14px;
     display: flex;
@@ -247,6 +241,8 @@
 .review-write-input-write {
     display: flex;
     flex: 3 1;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 
@@ -301,20 +297,24 @@ textarea {
 }
 
 .review-write-field-updateimgprev img {
-    width: 200px;
-    height: 200px;
+    width: 100%;
 }
 
 /* 추가 */
-#imgPrev {
-    width: 200px;
-    height: 200px;
-}
+/* #imgPrev {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+} */
 
-.image-preview {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* .image-preview {
+    width: 50px;
+    /* height: 100%; */
+    /* object-fit: cover;
+} */
+
+.image-preview img{
+    width: 50px;
 }
 
 .review-write-field input[type="text"] {
@@ -597,18 +597,18 @@ textarea {
     /* 수직으로 크기 조정 가능 */
 }
 
-/* #imgPrev {
-    width: 230px;
-    height: 230px;
-    overflow: hidden;
-} */
-
 
 
 .image-preview {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+}
+
+.review-write-field-imgbox{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
 }
 
 
@@ -627,6 +627,14 @@ textarea {
     box-sizing: border-box;
     resize: none;
     /* 수직으로 크기 조정 가능 */
+}
+
+.review-write-height40{
+    height: 40px;
+}
+
+.review-write-height60{
+    height: 60px;
 }
 
 
@@ -650,6 +658,7 @@ textarea {
 
     .btns-write {
         flex-direction: column;
+        margin-top: 0.5rem;
     }
 
     .btns button {
@@ -720,6 +729,23 @@ textarea {
 
 
 @media (max-width: 480px) {
+
+    .review-write-container-write {
+        margin-top: 2rem;
+    }
+
+    .writeReview2-write {
+        margin-top: 0;
+    }
+
+    .review-write-container-write>h2 {
+
+    }
+
+    .writeReviewUpdate{
+        width: 380px;
+    }
+
     .btns {
         flex-direction: column;
     }
@@ -742,19 +768,24 @@ textarea {
         margin-top: 10px;
     }
 
+    .review-write-input-update button {
+        width: 90%;
+        margin-top: 10px;
+    }
+
     .btns button:first-child {
         margin-top: 0;
     }
 
     .review-write-field-update {
         flex-direction: column;
-        /* 세로 정렬로 변경 */
+        width: 100%;
     }
 
     .review-write-label-update {
+        width: 90%;
         flex: 1 1;
         text-align: left;
-        /* 왼쪽 정렬 */
         font-weight: bold;
         font-size: 14px;
     }
@@ -770,8 +801,36 @@ textarea {
         height: auto;
         min-height: 40px;
         resize: none;
-        /* 크기 조정 비활성화 */
         font-size: 16px;
         line-height: 1.5;
+    }
+
+    .review-write-field-imgbox{
+        width: 150px;
+        height: 150px;
+    }
+
+    .review-write-label {
+        font-size: 12px;
+    }
+
+    .review-write-field-write {
+        display: flex;
+        border-bottom: 1px solid #c9c9c9;
+        align-content: center;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 5px 0;
+    }
+
+    .review-write-input-write>button {
+        height: 30px;
+        padding: 0;
+    }
+
+    .review-write-field-write {
+
     }
 }

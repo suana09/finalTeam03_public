@@ -32,15 +32,15 @@ function Login() {
     }
 
     const kakao = () => {
-        window.location.href = 'http://localhost:8090/auth/kakao/loginpage';
+        window.location.href = 'https://matchive.site/api/auth/kakao/loginpage';
     }
 
     const google = () => {
-        window.location.href = 'http://localhost:8090/auth/google/loginpage';
+        window.location.href = 'https://matchive.site/api/auth/google/loginpage';
     }
 
     const naver = () => {
-        window.location.href = 'http://localhost:8090/auth/naver/loginpage';
+        window.location.href = 'https://matchive.site/api/auth/naver/loginpage';
     }
 
 

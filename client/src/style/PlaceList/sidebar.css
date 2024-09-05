@@ -1,4 +1,4 @@
-.placelist-sidebar-container{
+.placelist-sidebar-container {
     width: 250px;
     background-color: #ffffff;
     padding: 10px;
@@ -6,10 +6,10 @@
     flex-direction: column;
     justify-content: space-between;
     /* overflow-y: auto; */
-    height: 100%;    
+    height: 100%;
 }
 
-.placelist-sidebar-selectedplace{
+.placelist-sidebar-selectedplace {
     width: 100%;
     height: 300px;
     position: relative;
@@ -19,14 +19,14 @@
     margin-bottom: 15px;
 }
 
-.placelist-sidebar-selectedplace-infotext{
+.placelist-sidebar-selectedplace-infotext {
     margin: 10px 0;
     font-size: 14px;
     text-align: center;
     font-weight: bold;
 }
 
-.placelist-sidebar-selectedplace-img{
+.placelist-sidebar-selectedplace-img {
     position: relative;
     /* width: 100%; */
     height: 180px;
@@ -35,13 +35,13 @@
     border-radius: 10px;
 }
 
-.placelist-sidebar-selectedplace-img img{
+.placelist-sidebar-selectedplace-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.placelist-sidebar-selectedplace-title{
+.placelist-sidebar-selectedplace-title {
     width: 100%;
     height: 20px;
     display: flex;
@@ -53,7 +53,7 @@
     line-height: 0px;
 }
 
-.placelist-sidebar-selectedplace-overlay{
+.placelist-sidebar-selectedplace-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -66,13 +66,13 @@
     align-items: flex-end;
 }
 
-.placelist-sidebar-selectedplace-btns{
+.placelist-sidebar-selectedplace-btns {
     height: 30px;
     display: flex;
     justify-content: space-evenly;
 }
 
-.placelist-sidebar-selectedplace-btns button{
+.placelist-sidebar-selectedplace-btns button {
     background: var(--black);
     color: #ffffff;
     border: none;
@@ -82,7 +82,7 @@
     cursor: pointer;
 }
 
-.placeList-sidebar-list{
+.placeList-sidebar-list {
     overflow-y: auto;
     outline: none;
     height: calc(100%);
@@ -90,7 +90,7 @@
 }
 
 
-.placelist-sidebar-item{
+.placelist-sidebar-item {
     background-color: #ffffff;
     padding: 10px;
     margin-bottom: 5px;
@@ -101,25 +101,25 @@
     align-items: center;
 }
 
-.placelist-sidebar-item span{
+.placelist-sidebar-item span {
     font-size: 13px;
 }
 
-.placelist-sidebar-item:hover{
+.placelist-sidebar-item:hover {
     transform: scale(1.02);
     transition: 0.3s;
 }
 
-.placelist-sidebar-item-selected{
+.placelist-sidebar-item-selected {
     padding: 10px;
     margin-bottom: 5px;
-    cursor: pointer; 
+    cursor: pointer;
     border-radius: 10px;
     background-color: var(--primary-color);
     color: white;
 }
 
-.placelist-sidebar-item-img{
+.placelist-sidebar-item-img {
     border-radius: 10px;
     width: 180px;
     height: 100px;
@@ -127,7 +127,7 @@
     margin-bottom: 5px;
 }
 
-.placelist-sidebar-item-img img{
+.placelist-sidebar-item-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -135,7 +135,7 @@
 
 
 
-.placelidesidebar-modal-overlay{
+.placelidesidebar-modal-overlay {
     position: absolute;
     width: 100vw;
     height: 100vh;
@@ -147,7 +147,50 @@
     z-index: 1100;
 }
 
-.placelidesidebar-editFormBox{
+.placelidesidebar-editFormBox {
     width: 500px;
     height: 80%;
+}
+
+.placelist-sidebar-closebtn{
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .placelist-sidebar-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 51;
+        width: 100vw;
+    }
+
+    .displayNone{
+        display: none !important;
+    }
+
+    .placelist-sidebar-closebtn{
+        width: 100vw;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .placelist-sidebar-closebtn button{
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+        position: relative;
+        background-color: var(--white);
+        border: none;
+    }
+
+    .placelist-sidebar-closebtn button img{
+        width: 26px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
 }

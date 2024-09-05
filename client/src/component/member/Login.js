@@ -10,7 +10,7 @@ import Header from '../HeaderFooter/Header';
 import GoogleIcon from '../../images/google.png';
 import KakaoIcon from '../../images/kakao.png';
 import NaverIcon from '../../images/naver.png';
-
+// member
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -37,22 +37,24 @@ function Login() {
                 const error = err.response.data.error;
                 if (error === "ERROR_LOGIN" || error === "ERROR_USER_DELETED") {
                     alert("이메일 또는 비밀번호 오류입니다.");
-                } else if (error === "ERROR_INACTIVE") {
-                    alert("휴면회원입니다.");
+                } else if (error === "ERROR_USER_INACTIVE") {
+                    if (window.confirm("해당 계정 1년간 로그인 기록이 없어 휴면회원으로 전환된 계정입니다. 복구를 위해 이메일 인증을 진행하시겠습니까?")){
+                        navigate('/reactivate');
+                    }
                 }
             })
     }
 
     const kakao = () => {
-        window.location.href = 'http://localhost:8090/auth/kakao/loginpage';
+        window.location.href = 'https://matchive.site/api/auth/kakao/loginpage';
     }
 
     const google = () => {
-        window.location.href = 'http://localhost:8090/auth/google/loginpage';
+        window.location.href = 'https://matchive.site/api/auth/google/loginpage';
     }
 
     const naver = () => {
-        window.location.href = 'http://localhost:8090/auth/naver/loginpage';
+        window.location.href = 'https://matchive.site/api/auth/naver/loginpage';
     }
 
     const handleKeyDown = (e) => {
@@ -78,7 +80,7 @@ function Login() {
                     <button className='loginbtns3' onClick={login}>로그인</button>
                     <div className="idpwd-search-box">
                         <div className='joinus-box'>
-                            {/* <p>비밀번호가 기억이 나지 않아요</p> */}
+                            <p>비밀번호가 기억이 나지 않아요</p>    
                             <p><a href="/resetpwd">비밀번호 재설정</a></p>
                         </div>
                     </div>

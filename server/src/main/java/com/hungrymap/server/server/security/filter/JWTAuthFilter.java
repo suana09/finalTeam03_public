@@ -103,7 +103,6 @@ public class JWTAuthFilter extends OncePerRequestFilter {
     }
 
     private String getRefreshToken(HttpServletRequest request) {
-        System.out.println("getRefreshToken 실행됨");
         Cookie[] cookies = request.getCookies();
         if (cookies == null){
             System.out.println("cookies is null");
@@ -138,7 +137,6 @@ public class JWTAuthFilter extends OncePerRequestFilter {
                 "/member/validation/email",
                 "/mail",
                 "/placelist", //임시
-                "/review/WritePlaceSearch",
                 "/map",
                 "/placelist/popular",
                 "/place",

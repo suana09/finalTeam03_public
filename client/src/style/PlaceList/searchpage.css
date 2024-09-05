@@ -52,7 +52,7 @@
 }
 
 .pli-searchpage-content-container-box{
-    width: 1000px;
+    width: 100%;
     height: 400px;
     padding: 0 20px;
     position: relative;
@@ -187,8 +187,21 @@
 
 @media (max-width: 768px) {
     .main-best10-text h1{
-        font-size: 30px;
+        font-size: 20px;
     }
+
+    /* .custom-slick-next {
+        right: -20px;
+    }
+
+    .custom-slick-prev {
+        left: -20px;
+    } */
+
+    .pli-searchpage-input {
+        width: 70%;
+    }
+
     /* .pli-searchpage-slider {
         width: 100%;  
     }

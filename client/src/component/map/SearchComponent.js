@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../../style/search/searchbar.css';
 
-function SearchComponent({ onResults, page, clearResults, onSearchParams, searchParams }) {
+function SearchComponent({ onResults, page, clearResults, onSearchParams, searchParams, onChangePlaceSliderVisibility, onChangeMapSidebarVisibility }) {
     const [searchKeyword, setSearchKeyword] = useState('');
     const [minRate, setMinRate] = useState(null);
     const [minReview, setMinReview] = useState(null);
@@ -11,14 +11,36 @@ function SearchComponent({ onResults, page, clearResults, onSearchParams, search
     const [useLocationSearch, setUseLocationSearch] = useState(false);
     const [initialSearchKeyword, setInitialSearchKeyword] = useState('');
     const [initialUseLocationSearch, setInitialUseLocationSearch] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
-    useEffect(()=>{
+    useEffect(() => {
         if (searchParams) {
             setInitialSearchKeyword(searchParams.keyword);
             setInitialUseLocationSearch(searchParams.useLocationSearch);
             handleSearch(2);
         }
     }, [searchParams])
+
+    useEffect(() => {
+        const updateSlidesToShow = () => {
+            if (window.innerWidth <= 480) {
+                setIsMobile(true);
+
+            } else {
+                setIsMobile(false);
+            }
+        };
+
+        window.addEventListener('resize', updateSlidesToShow);
+
+        // 컴포넌트가 마운트될 때 초기 설정
+        updateSlidesToShow();
+
+        // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거.
+        return () => {
+            window.removeEventListener('resize', updateSlidesToShow);
+        };
+    }, []);
 
 
     const location = useLocation();
@@ -27,15 +49,15 @@ function SearchComponent({ onResults, page, clearResults, onSearchParams, search
     const apiKey = process.env.REACT_APP_KAKAO_REST_API_KEY;
 
     const query = () => {
-        if (initialUseLocationSearch && !initialSearchKeyword) {  
+        if (initialUseLocationSearch && !initialSearchKeyword) {
             return '맛집';
-        } else if (initialUseLocationSearch && initialSearchKeyword){
+        } else if (initialUseLocationSearch && initialSearchKeyword) {
             return initialSearchKeyword + ' 맛집';
         } else if (!initialUseLocationSearch && initialSearchKeyword) {
             return initialSearchKeyword + ' 맛집';
-        } else if (useLocationSearch && !searchKeyword){
+        } else if (useLocationSearch && !searchKeyword) {
             return '맛집'
-        }  else if (useLocationSearch && searchKeyword){
+        } else if (useLocationSearch && searchKeyword) {
             return searchKeyword + ' 맛집';
         } else if (!useLocationSearch && searchKeyword) {
             return searchKeyword + ' 맛집';
@@ -73,7 +95,6 @@ function SearchComponent({ onResults, page, clearResults, onSearchParams, search
                 page,
                 size: 10,
             };
-            console.log("요청");
             const { data } = await axios.get('https://dapi.kakao.com/v2/local/search/keyword.json', {
                 headers: {
                     Authorization: `KakaoAK ${apiKey}`
@@ -93,7 +114,7 @@ function SearchComponent({ onResults, page, clearResults, onSearchParams, search
 
                 results.push(...dataResults);
             }
-            
+
             isEnd = data.meta.is_end;
 
 
@@ -108,10 +129,14 @@ function SearchComponent({ onResults, page, clearResults, onSearchParams, search
                 setInitialUseLocationSearch(false);
             }
 
-            if (currentPath === ('/')){
+            if (currentPath === ('/')) {
                 onSearchParams(searchKeyword, useLocationSearch, results, isEnd);
             }
-            onResults(results, {avgX, avgY}, isEnd);
+            onResults(results, { avgX, avgY }, isEnd);
+            if (isMobile) {
+                onChangeMapSidebarVisibility(true);
+                onChangePlaceSliderVisibility();
+            }
 
         } catch (error) {
             console.error('API 요청 실패:', error);
@@ -183,7 +208,7 @@ function SearchComponent({ onResults, page, clearResults, onSearchParams, search
                     placeholder="검색어를 입력하세요"
                 />
                 <button onClick={handleSearchClick}>검색</button>
-                <button onClick={searchByCurrentLoc}>주변 검색</button>
+                <button onClick={searchByCurrentLoc}>내주변</button>
             </div>
             <div id='searchFilterWindow' className={`search-filter-section ${isFilterVisible ? 'active' : ''}`}>
                 <div className="search-filter-popup">

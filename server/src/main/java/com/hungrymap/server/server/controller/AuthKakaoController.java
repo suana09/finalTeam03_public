@@ -59,7 +59,6 @@ public class AuthKakaoController {
             throws UnsupportedEncodingException, IOException {
 
         PasswordEncoder pe = csc.passwordEncoder();
-        System.out.println("pe = " + pe);
 
         String code = request.getParameter("code");
         String endpoint = "https://kauth.kakao.com/oauth/token";
@@ -97,9 +96,6 @@ public class AuthKakaoController {
             sb2.append(input2);
         }
 
-        System.out.println("JSON 응답 데이터: " + sb2.toString());
-
-
         Gson gson2 = new Gson();
         KakaoProfile kakaoProfile = gson2.fromJson(sb2.toString(), KakaoProfile.class);
         KakaoProfile.KakaoAccount ac = kakaoProfile.getAccount();
@@ -119,7 +115,7 @@ public class AuthKakaoController {
         session.setAttribute("loginUser", member);
 
         String encodedEmail = URLEncoder.encode(member.getEmail(), StandardCharsets.UTF_8.toString());
-        String redirectUrl = "http://localhost:3000/kakaosaveinfo/"+encodedEmail;
+        String redirectUrl = "https://matchive.site/kakaosaveinfo/"+encodedEmail;
         response.sendRedirect(redirectUrl);
     }
 

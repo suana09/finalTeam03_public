@@ -55,8 +55,6 @@ public class JWTUtil {
                     .build()
                     .parseClaimsJws(accessToken)
                     .getBody();
-
-            System.out.println("claim = " + claim);
         }catch(ExpiredJwtException expiredJwtException){
             throw new CustomJWTException("Expired");
         }catch(InvalidClaimException invalidClaimException){

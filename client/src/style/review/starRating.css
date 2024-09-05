@@ -7,3 +7,9 @@
 .gold {
     color: gold;
 }
+
+@media (max-width: 480px) {
+    .star {
+        font-size: 24px;
+    }
+}

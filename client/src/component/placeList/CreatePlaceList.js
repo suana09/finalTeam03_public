@@ -24,7 +24,7 @@ function CreateInsertPlace({ onAddPlaceList }) {
                     let imgtag = document.createElement('img');
                     imgtag.src = event.target.result;
                     // imgtag.style.display = 'inline-block';
-                    imgtag.style.width = '200px';
+                    imgtag.style.width = '80px';
                     imgtag.className = 'image-preview';
                     document.querySelector('#imgPrev').appendChild(imgtag);
                 };

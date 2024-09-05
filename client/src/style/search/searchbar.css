@@ -93,12 +93,33 @@
     margin-bottom: 5px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .search-bar-container{
-        width: 800px;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .pli-searchpage-content-item-container{
         width: 800px;
+    }
+
+    .placelist-main-inner-container {
+        position: relative;
+    }
+
+    .search-bar-container input[type=text] {
+        width: 50%;
+    }
+
+    .search-bar-container button {
+        font-size: 11px;
+        width: 60px;
+    }
+
+    .search-bar-window {
+        margin-bottom: 0px;
     }
 }

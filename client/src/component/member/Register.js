@@ -8,7 +8,7 @@ import Header from '../HeaderFooter/Header';
 import GoogleIcon from '../../images/google.png';
 import KakaoIcon from '../../images/kakao.png';
 import NaverIcon from '../../images/naver.png';
-
+// member
 function Register() {
     const [email, setEmail] = useState('');
     const [emailcode, setEmailCode] = useState('');
@@ -50,8 +50,11 @@ function Register() {
                                 if (window.confirm("해당 계정은 탈퇴된 계정입니다. 복구를 위해 이메일 인증을 진행하시겠습니까?")) {
                                     navigate('/reactivate');
                                 }
+                            } else if (res.data.isDeleted === true && res.data.isDeletedAndReactivatable === false){
+                                setEmailCheckResult(true);
+                            } else {
+                                setEmailCheckResult(false);
                             }
-                            setEmailCheckResult(false);
                         } else {
                             setEmailCheckResult(true);
                         }
@@ -178,15 +181,15 @@ function Register() {
     }
 
     const kakao = () => {
-        window.location.href = 'http://localhost:8090/auth/kakao/loginpage';
+        window.location.href = 'https://matchive.site/api/auth/kakao/loginpage';
     }
 
     const google = () => {
-        window.location.href = 'http://localhost:8090/auth/google/loginpage';
+        window.location.href = 'https://matchive.site/api/auth/google/loginpage';
     }
 
     const naver = () => {
-        window.location.href = 'http://localhost:8090/auth/naver/loginpage';
+        window.location.href = 'https://matchive.site/api/auth/naver/loginpage';
     }
 
     useEffect(() => {

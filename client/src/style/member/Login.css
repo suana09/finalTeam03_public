@@ -1,173 +1,179 @@
 /* Login.css */
 
-.login-upper{
-  width: 100%;
-  /* height: 100vh; */
+.login-upper {
+    width: 100%;
+    /* height: 100vh; */
 }
 
 /* 로그인 컨테이너 */
 .login-container {
-  border-radius: 40px;
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 20px;
-  padding-bottom: 40px;
-  width: 800px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 100px auto;
+    border-radius: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    width: 800px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px auto;
 }
 
 .login-container h1 {
-  margin-top: 50px;
-  margin-bottom: 50px;
-  color: rgb(42, 86, 182);
-  font-weight: normal;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color: rgb(42, 86, 182);
+    font-weight: normal;
 }
 
 .login-container p {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .login-fields {
-  display: flex;
-  align-items: center;
-  width: 70%;
-  border-bottom: 1px solid #ccc;
-  justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    width: 70%;
+    border-bottom: 1px solid #ccc;
+    justify-content: flex-start;
 }
+
 /* 
 .login-fields:focus {
   border-bottom: 2px solid #003c3b;
 } */
 
 .login-label {
-  font-weight: normal;
-  flex: 1;
-  display: flex;
+    font-weight: normal;
+    flex: 1;
+    display: flex;
 }
 
 /* 입력 필드 */
 .logininput {
-  width: 70%;
-  padding: 15px;
-  margin: 10px 0;
-  border: none;
-  box-sizing: border-box;
-  outline: none;
+    width: 70%;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
 }
 
 
 .logininput::placeholder {
-  color: black;
-  opacity: 1;
-  font-weight: bold;
+    color: black;
+    opacity: 1;
+    font-weight: bold;
 }
 
 .joinus {
-  margin-top: 30px;
-  display: flex;
-  font-size: small;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
+    margin-top: 30px;
+    display: flex;
+    font-size: small;
+    flex-direction: column;
+    width: 400px;
+    align-items: center;
 }
 
-.joinus-box{
-  width: 100%;
-  display: flex;
-  justify-content: center;
+.joinus-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
-.joinus-box p{
-  margin: 0 20px;
+.joinus-box p {
+    margin: 0 20px;
 }
 
 .joinus a {
-  text-decoration-line: none;
-  font-weight: bold;
-  color: #5f5f5f;
+    text-decoration-line: none;
+    font-weight: bold;
+    color: #5f5f5f;
 }
 
 .joinus a:hover {
-  color: dodgerblue;
-  transition: 0.3s;
+    color: dodgerblue;
+    transition: 0.3s;
 }
 
-.idpwd-search-box{
-  margin-top: 30px;
-  display: flex;
-  font-size: small;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 50px; 
+.idpwd-search-box {
+    margin-top: 30px;
+    display: flex;
+    font-size: small;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 50px;
 }
 
 .idpwd-search-box a {
-  text-decoration-line: none;
-  font-weight: bold;
-  color: #5f5f5f;
+    text-decoration-line: none;
+    font-weight: bold;
+    color: #5f5f5f;
 }
+
 .idpwd-search-box a:hover {
-  color: dodgerblue;
-  transition: 0.3s;
+    color: dodgerblue;
+    transition: 0.3s;
 }
 
 /* 버튼 공통 스타일 */
 .loginbtns,
 .loginbtns1,
 .loginbtns2 {
-  width: 70%; /* 버튼의 너비를 100%로 설정 */
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  color: #fff;
-  font-size: 16px;
-  margin: 10px 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+    width: 70%;
+    /* 버튼의 너비를 100%로 설정 */
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
+
 .loginbtns3 {
-  width: 70%; /* 버튼의 너비를 100%로 설정 */
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  color: #fff;
-  padding: 18px;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 70%;
+    /* 버튼의 너비를 100%로 설정 */
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    padding: 18px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 구글 버튼 스타일 */
 .loginbtns {
-  background-color: #ff3e30 ;
+    background-color: #ff3e30;
 }
 
 /* 카카오 버튼 스타일 */
 .loginbtns1 {
-  background-color: #fee500 ;
-  color: #000; /* 버튼 텍스트 색상을 검정으로 변경 */
+    background-color: #fee500;
+    color: #000;
+    /* 버튼 텍스트 색상을 검정으로 변경 */
 }
 
 /* 네이버 버튼 스타일 */
 .loginbtns2 {
-  background-color: #03c75a;
+    background-color: #03c75a;
 }
 
 
 /* 이메일 버튼 스타일 */
 .loginbtns3 {
-  background-color: black;
-  margin-top: 60px;
-  font-weight: bold;
+    background-color: black;
+    margin-top: 60px;
+    font-weight: bold;
 }
 
 /* 버튼 호버 효과 */
@@ -175,99 +181,140 @@
 .loginbtns1:hover,
 .loginbtns2:hover,
 .loginbtns3:hover {
-  opacity: 0.8;
-  transition: 0.3s;
+    opacity: 0.8;
+    transition: 0.3s;
 }
 
 /* 회원 탈퇴 페이지 용 css */
 
 .delete-container {
-  border-radius: 40px;
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 50px;
-  padding-bottom: 40px;
-  width: 800px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.delete-container h1 {
-  color: black;
-  margin: 0 auto;
-  margin-bottom: 40px;
-}
-
-
-.delete-field{
-  display: flex;
-  align-items: center;
-  width: 60%;
-  margin-bottom: 50px;
-  border-bottom: 1px solid #ccc;
-  justify-content: center;
-}
-
-.delete-label{
-  flex: 1 1;
-  display: flex;
-  justify-content: flex-start;
-  font-size: 14px;
-}
-
-.delete-input {
-  width: 70%;
-  padding: 15px;
-  margin: 10px 0;
-  border: none;
-  box-sizing: border-box;
-  outline: none;
-}
-
-.delete-btn {
-  width: 60%; /* 버튼의 너비를 100%로 설정 */
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  color: #fff;
-  padding: 18px;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  margin-top: 60px;
-  margin-bottom: 90px;
-  font-weight: bold;
-}
-
-.delete-btn:hover {
-  background-color:var(--red);
-  transition: 0.3s;
-}
-
-@media (max-width: 768px) {
-  .login-container {
     border-radius: 40px;
-    padding-top: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
     padding-bottom: 40px;
-    width: 100%;
+    width: 800px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
-  }
-  .login-fields {
-    display: flex;
-    align-items: center;
-    width: 400px;
-    border-bottom: 1px solid #ccc;
-    justify-content: flex-start;
-  }
+}
+
+.delete-container h1 {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    color: #2a56b6;
+    font-weight: normal;
 }
 
 
+.delete-field {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #ccc;
+    justify-content: center;
+}
+
+.delete-label {
+    flex: 1 1;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 14px;
+}
+
+.delete-input {
+    width: 70%;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.delete-btn {
+    width: 60%;
+    /* 버튼의 너비를 100%로 설정 */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    padding: 18px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    margin-top: 60px;
+    margin-bottom: 90px;
+    font-weight: bold;
+}
+
+.delete-btn:hover {
+    background-color: var(--red);
+    transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+
+    .login-container {
+        border-radius: 40px;
+        padding-top: 20px;
+        padding-bottom: 40px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 50px;
+    }
+
+    .login-fields {
+        display: flex;
+        align-items: center;
+        width: 300px;
+        border-bottom: 1px solid #ccc;
+        justify-content: flex-start;
+        font-size: 12px;
+    }
+
+    .loginbtns,
+    .loginbtns1,
+    .loginbtns2,
+    .loginbtns3 {
+        width: 300px;
+    }
+
+    .delete-container {
+        width: 300px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .delete-container p {
+        font-size: 13px;
+    }
+
+    
+    .delete-field {
+        width: 80%;
+        font-size: 12px
+    }
+
+    .delete-label {
+        font-size: 12px
+    }
+
+    .delete-btn {
+        width: 80%;
+        height: 50px;
+        font-size: 15px;
+        font-weight: normal;
+    }
+
+}

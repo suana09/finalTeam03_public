@@ -6,7 +6,7 @@ import Footer from '../HeaderFooter/Footer';
 import Header from '../HeaderFooter/Header';
 
 import '../../style/member/Login.css';
-
+// member
 function ResetPwd() {
     const [email, setEmail] = useState('');
     const [emailcode, setEmailCode] = useState('');

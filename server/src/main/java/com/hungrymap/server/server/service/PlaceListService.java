@@ -51,7 +51,6 @@ public class PlaceListService {
                 // 해당 이름+리스트 아이디가 기존 리스트 아이디랑 다르면
                 if (!Objects.equals(placeList.getId(), nameExists.get().getId())) {
                     // 수정실패
-                    System.out.println("수정실패");
                     return null;
                 }
             }

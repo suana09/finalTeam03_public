@@ -1,8 +1,8 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../style/HeaderFooter.css';
 import '../style/index.css';
-import axios from 'axios';
 
 import Footer from './HeaderFooter/Footer';
 import Header from './HeaderFooter/Header';
@@ -15,16 +15,15 @@ import "slick-carousel/slick/slick.css";
 import index_image1 from '../images/banner_image1.png';
 import index_image2 from '../images/dessert.jpg';
 import index_image3 from '../images/fastfood.jpg';
-import logo_text from '../images/logo_text.png';
 import nextArrow from '../images/icons/arrow-next.png';
 import prevArrow from '../images/icons/arrow-prev.png';
+import logo_text from '../images/logo_text.png';
 
 
 function Index() {
-    const nav = useNavigate();
     const navigate = useNavigate();
     const [hotplis, setHotplis] = useState([]);
-
+    const [slidesToShow, setSlidesToShow] = useState(3); 
     const [searchKeyword, setSearchKeyword] = useState('');
     const [useLocationSearch, setUseLocationSearch] = useState(false);
 
@@ -32,51 +31,70 @@ function Index() {
     const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
         <button
             {...props}
-            className={
-                "custom-slick-arrow custom-slick-prev" +
-                (currentSlide === 0 ? " slick-disabled" : "")
-            }
-            aria-hidden="true"
-            aria-disabled={currentSlide === 0 ? true : false}
+            className="custom-slick-arrow custom-slick-prev"
             type="button"
+            style={{left:"-10px"}}
         >
             <img src={prevArrow} alt="Previous" />
         </button>
     );
+    
     const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
         <button
             {...props}
-            className={
-                "custom-slick-arrow custom-slick-next" +
-                (currentSlide === slideCount - 1 ? " slick-disabled" : "")
-            }
-            aria-hidden="true"
-            aria-disabled={currentSlide === slideCount - 1 ? true : false}
+            className="custom-slick-arrow custom-slick-next"
             type="button"
+            style={{right:"-10px"}}
         >
             <img src={nextArrow} alt="Next" />
         </button>
     );
+    
+
+    useEffect(() => {
+        const updateSlidesToShow = () => {
+            if (window.innerWidth <= 768) {
+                setSlidesToShow(1);
+            } else {
+                setSlidesToShow(3);
+            }
+        };
+
+        window.addEventListener('resize', updateSlidesToShow);
+
+        // 컴포넌트가 마운트될 때 초기 설정
+        updateSlidesToShow();
+
+        // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거.
+        return () => {
+            window.removeEventListener('resize', updateSlidesToShow);
+        };
+    }, []);
+
 
     const settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: slidesToShow,
         slidesToScroll: 1,
         prevArrow: <SlickArrowLeft />,
         nextArrow: <SlickArrowRight />,
-        // responsive: [
-        //     {
-        //         breakpoint: 768, // 화면 너비가 768px 이하일 때
-        //         settings: {
-        //             slidesToShow: 1,  // 1개의 슬라이드만 보여줍니다.
-        //             arrows : true
-        //         }
-        //     }
-        // ]
+        responsive: [
+            {
+                breakpoint: 768, // 화면 너비가 768px 이하일 때
+                settings: {
+                    slidesToShow: 1, // 1개의 슬라이드만 보여줌.
+                    slidesToScroll: 1,
+                    infinite: true,
+                    prevArrow: <SlickArrowLeft />,
+                    nextArrow: <SlickArrowRight />,
+                }
+            }
+        ]
     };
-
+    
+ 
     
 
     useEffect(() => {
@@ -166,7 +184,7 @@ function Index() {
             {/* 메인페이지 배너 이미지 */}
             <div className="banner">
                 <div className='text'>
-                    <img src={logo_text} alt='Logo' width={700} />
+                    <img src={logo_text} alt='Logo'/>
                 </div>
                 <div className="slider-container">
                     <div className='slider'>

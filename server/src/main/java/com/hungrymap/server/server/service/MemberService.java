@@ -170,7 +170,7 @@ public class MemberService {
         LocalDateTime now = LocalDateTime.now();
         List<Member> toInactive = mr.getAllWithRoles().stream()
                 // 마지막 로그인 일시로부터 일년이 지난 회원들 스트림
-                .filter(mem -> mem.getLastLoginTime().isBefore(now.minus(1, ChronoUnit.YEARS)))
+                .filter(mem -> mem.getLastLoginTime() != null && mem.getLastLoginTime().isBefore(now.minus(1, ChronoUnit.YEARS)))
                 // USER O, ADMIN X 인 회원
                 // 관리자 회원은 휴면회원 전환 X
                 .filter(mem -> mem.getUserRoleList().stream().anyMatch(role -> role == Roles.USER))

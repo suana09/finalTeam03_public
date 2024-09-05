@@ -5,7 +5,7 @@ import authAxios from '../../util/jwtUtil';
 
 function PlaceListEditForm({ selectedList, onUpdatePlaceList }) {
 
-    useEffect(()=>{
+    useEffect(() => {
         document.querySelectorAll('input, textarea').forEach((element) => {
             element.setAttribute('spellcheck', 'false');
         });
@@ -60,7 +60,6 @@ function PlaceListEditForm({ selectedList, onUpdatePlaceList }) {
 
         // 새로운 파일이 업로드된 경우
         if (files.length > 0) {
-            console.log("우잉?");
             Array.from(files).forEach((file) => {
                 formData.append('file', file);
             });
@@ -68,8 +67,6 @@ function PlaceListEditForm({ selectedList, onUpdatePlaceList }) {
             try {
                 const res = await authAxios.post('/api/file', formData);
                 savefilenameRes = res.data.savefilename;
-
-                console.log(savefilenameRes);
             } catch (error) {
                 console.log(error);
             }
@@ -88,14 +85,14 @@ function PlaceListEditForm({ selectedList, onUpdatePlaceList }) {
             alert("맛플리 수정이 완료되었습니다.")
             onUpdatePlaceList(selectedList.id, updatedPli);
         } catch (error) {
-            if (error.response.status === 409){
+            if (error.response.status === 409) {
                 alert("현재 입력한 이름의 맛플리가 이미 회원님의 목록에 존재합니다. 다른 이름으로 변경해 주세요.");
                 onUpdatePlaceList();
             }
         }
     }
 
-    
+
 
     return (
         <div className='createPlaceListFormContainer'>
@@ -110,7 +107,7 @@ function PlaceListEditForm({ selectedList, onUpdatePlaceList }) {
                             <div className='review-write-input'>
                                 <input
                                     type="text"
-                                    value={name} 
+                                    value={name}
                                     onChange={(e) => setName(e.currentTarget.value)}
                                 />
                             </div>
@@ -136,7 +133,7 @@ function PlaceListEditForm({ selectedList, onUpdatePlaceList }) {
                             <div className="review-write-label">기존 이미지</div>
                             <div className="review-write-input">
                                 {selectedList.image && 
-                                    <img src={`/api/images/${selectedList.image}`} alt="기존 이미지" style={{height:"100px"}}/>}
+                                    <img src={selectedList.image} alt="기존 이미지" style={{height:"100px"}}/>}
                             </div>
                         </div>
 

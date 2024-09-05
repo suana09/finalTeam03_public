@@ -75,7 +75,7 @@
 .register-input{
     display: flex;
     align-items: center;
-    flex: 3;
+    /* flex: 3; */
 }
 
 .register-input input {
@@ -94,14 +94,17 @@
 }
 
 .kakao {
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .sns-register {
-    cursor: pointer;
     margin-top: 20px;
     margin-bottom: 40px;
+}
+
+.sns-register img{
+    cursor: pointer;
 }
 
 .verify {
@@ -117,7 +120,7 @@
 }
 
 .register {
-    width: 70%; /* 버튼의 너비를 100%로 설정 */
+    width: 100%; /* 버튼의 너비를 100%로 설정 */
     padding: 20px;
     border: none;
     border-radius: 5px;
@@ -181,7 +184,7 @@
         display: flex;
         flex-direction: row;
         border-bottom: 1px solid #c0c0c0;
-        width: 100%;
+        width: 300px;
         height: 70px;
         align-items: center;
         margin-bottom: 30px;
@@ -192,10 +195,49 @@
         border-bottom: none;
         display: flex;
         flex-direction: row;
-        width: 100%;
+        width: 300px;
         height: 70px;
         margin-bottom: 30px;
         align-items: center;
         position: relative;
     }
+
+    .register-input {
+        flex: 2 1;
+        display: flex;
+    }
+
+    .register-input input {
+        width: 70%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    .verify {
+        width: 30%;
+    }
+    .register-labels {
+        /* flex: 2 1; */
+    }
+
+    .register-input {
+        flex: 2;
+    }
+    .register {
+        width: 300px;
+    }
+
+    .register-input input {
+        width: 70%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+
 }

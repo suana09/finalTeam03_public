@@ -2,17 +2,20 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import '../../style/PlaceList/sidebar.css';
 import authAxios from '../../util/jwtUtil';
+import closeIcon from '../../images/icons/close.png'
 
 import PlaceListEditForm from './PlaceListEditForm';
 
 import { useLocation } from 'react-router-dom';
 
-function PlaceListSideBar({ myLists, onSelectPlaceList, onChangePlaceList }) {
+function PlaceListSideBar({ myLists, onSelectPlaceList, onChangePlaceList, sbVisiablityByToggle, onChangePliSbVisibility }) {
     const [placeLists, setPlaceLists] = useState([]);
     const [selectedPlaceListId, setSelectedPlaceListId] = useState(null);
     const [myfavlists, setMyfavlists] = useState([]);
     const [isEditingPlaceList, setIsEditingPlaceList] = useState(false);
+    const [plisVisiabilty, setPlisVisiabilty] = useState('');
     const loginUser = useSelector(state => state.user);
+
 
     const editListRef = useRef(null);
 
@@ -23,12 +26,14 @@ function PlaceListSideBar({ myLists, onSelectPlaceList, onChangePlaceList }) {
         document.querySelectorAll('input, textarea').forEach((element) => {
             element.setAttribute('spellcheck', 'false');
         });
+
     }, [])
 
     useEffect(() => {
         if (Array.isArray(myLists)) {
             setPlaceLists(myLists);
             if (myLists.length > 0) {
+                onSelectPlaceList(myLists[0]);
                 setSelectedPlaceListId(myLists[0].id);
             }
         } else {
@@ -50,23 +55,47 @@ function PlaceListSideBar({ myLists, onSelectPlaceList, onChangePlaceList }) {
             });
     }, [loginUser]);
 
+    useEffect(() => {
+        const updateSlidesToShow = () => {
+            if (window.innerWidth <= 480) {
+                setPlisVisiabilty(' displayNone');
+                
+            } else {
+                setPlisVisiabilty('');
+            }
+        };
+
+        window.addEventListener('resize', updateSlidesToShow);
+
+        // 컴포넌트가 마운트될 때 초기 설정
+        updateSlidesToShow();
+
+        // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거.
+        return () => {
+            window.removeEventListener('resize', updateSlidesToShow);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (sbVisiablityByToggle === true) {
+            setPlisVisiabilty('');
+        } else {
+            setPlisVisiabilty(' displayNone');
+        }
+    }, [sbVisiablityByToggle])
+
     const handleSelect = (list) => {
         setSelectedPlaceListId(list.id);
-        if (currentPath.includes("/favoritePlis")){
-            onSelectPlaceList(list);
-        } else {
-            onSelectPlaceList(list.id);
-        }
+        onSelectPlaceList(list);
+        sidebarClose();
     };
 
     let selectedList = {};
-
 
     selectedList = myLists.find(list => list.id === selectedPlaceListId);
     if (!selectedList && myLists.length > 0) {
         selectedList = myLists[0];
     }
-
 
     const addToFav = () => {
         authAxios.post('/api/favorite', { listId: selectedPlaceListId, email: loginUser.email })
@@ -80,7 +109,7 @@ function PlaceListSideBar({ myLists, onSelectPlaceList, onChangePlaceList }) {
     };
 
     const removeFromFav = () => {
-        if (!window.confirm("즐겨찾기에서 삭제하시겠어요?")){
+        if (!window.confirm("즐겨찾기에서 삭제하시겠어요?")) {
             return;
         }
 
@@ -99,7 +128,7 @@ function PlaceListSideBar({ myLists, onSelectPlaceList, onChangePlaceList }) {
     }
 
     const deletePlaceList = (id) => {
-        if (!window.confirm("맛플리를 삭제하시겠어요?")){
+        if (!window.confirm("맛플리를 삭제하시겠어요?")) {
             return;
         }
 
@@ -115,7 +144,7 @@ function PlaceListSideBar({ myLists, onSelectPlaceList, onChangePlaceList }) {
             })
     }
 
-    const handleUpdatePlaceList = (id, updatedPli)=>{
+    const handleUpdatePlaceList = (id, updatedPli) => {
         onChangePlaceList(id, 'put', updatedPli);
         setIsEditingPlaceList(false);
     }
@@ -135,20 +164,29 @@ function PlaceListSideBar({ myLists, onSelectPlaceList, onChangePlaceList }) {
         };
     }, [isEditingPlaceList]);
 
+    const sidebarClose = ()=>{
+        onChangePliSbVisibility(false);
+        setPlisVisiabilty(' displayNone');
+    }
+
 
     return (
-        <div className="placelist-sidebar-container">
+        <div className={`placelist-sidebar-container ${plisVisiabilty}`}>
+            <div className='placelist-sidebar-closebtn'>
+                <button>
+                    <img src={closeIcon} alt="" onClick={()=>{sidebarClose()}}/>
+                </button>
+            </div>
             {
                 (isEditingPlaceList) && (
                     <div className='placelidesidebar-modal-overlay'>
                         <div className='placelidesidebar-editFormBox' ref={editListRef}>
-                            <PlaceListEditForm 
-                                selectedList={selectedList} 
+                            <PlaceListEditForm
+                                selectedList={selectedList}
                                 onUpdatePlaceList={handleUpdatePlaceList}
                             />
                         </div>
                     </div>
-
                 )
             }
             {
@@ -166,7 +204,7 @@ function PlaceListSideBar({ myLists, onSelectPlaceList, onChangePlaceList }) {
                         </div>
                         <div className='placelist-sidebar-selectedplace-img'>
                             {
-                                <img src={`${selectedList.image}`} alt="" />
+                                <img src={selectedList.image} alt="" />
                             }
                             <div className='placelist-sidebar-selectedplace-overlay'>
                                 <div className='placelist-sidebar-selectedplace-title'>
@@ -204,7 +242,7 @@ function PlaceListSideBar({ myLists, onSelectPlaceList, onChangePlaceList }) {
                             className={`placelist-sidebar-item ${place.id === selectedPlaceListId ? 'placelist-sidebar-item-selected' : ''}`}
                         >
                             <div className='placelist-sidebar-item-img'>
-                                <img src={`${place.image}`} alt="" />
+                                <img src={place.image} alt="" />
                             </div>
                             <span>{place.listName}</span>
                         </div>

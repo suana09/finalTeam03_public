@@ -3,7 +3,7 @@ import markerImageSrc from '../../images/map-marker-yellow.png';
 import DetailInfo from './DetailInfo';
 import '../../style/map/map.css';
 
-function MapComponent({ searchResults, selectedPlace, selectedListId, onChangePlace }) {
+function MapComponent({ searchResults, selectedPlace, selectedListId, onChangePlace, onChangePlaceSliderVisibility }) {
     const mapContainer = useRef(null);
     const [selectedPlaceMap, setSelectedPlaceMap] = useState(selectedPlace);
     const detailInfoRef = useRef(null);
@@ -112,6 +112,7 @@ function MapComponent({ searchResults, selectedPlace, selectedListId, onChangePl
                     });
 
                     kakao.maps.event.addListener(marker, 'click', () => {
+                        onChangePlaceSliderVisibility(false);
                         setSelectedPlaceMap(result);
                         mapInstance.setLevel(3);
                         mapInstance.setCenter(markerPosition);
@@ -188,6 +189,7 @@ function MapComponent({ searchResults, selectedPlace, selectedListId, onChangePl
 
             // selectedPlace의 마커 클릭 이벤트
             kakao.maps.event.addListener(marker, 'click', () => {
+                onChangePlaceSliderVisibility(false);
                 setSelectedPlaceMap(selectedPlace);
                 mapInstanceRef.current.setLevel(3);
                 mapInstanceRef.current.setCenter(markerPosition);
@@ -210,6 +212,7 @@ function MapComponent({ searchResults, selectedPlace, selectedListId, onChangePl
     }, [selectedPlace]);
 
     const handleCloseDetails = () => {
+        onChangePlaceSliderVisibility();
         setSelectedPlaceMap(null);
     };
 

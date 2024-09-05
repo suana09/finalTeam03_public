@@ -87,9 +87,9 @@ function WriteReview({ onWriteReview, selectedPlaceId, selectedPlaceName, place,
                     image: mainphoto ? mainphoto : '/api/images/noimages.png'
                 })
 
-                const result = await authAxios.post('/api/review/writeReview', { content: content, rates: rating, writer: loginUser.email, placeId: selectedPlaceId });
+                const result = await authAxios.post('/api/review', { content: content, rates: rating, writer: loginUser.email, placeId: selectedPlaceId });
                 if (result.data.message === "OK") {
-                    const imageResponse = await authAxios.post("/api/review/insertImages", { savefilename: savefilenameRes, reviewId: result.data.review.id })
+                    const imageResponse = await authAxios.post("/api/review/images", { savefilename: savefilenameRes, reviewId: result.data.review.id })
                     if (imageResponse.data.message === "OK") {
                         await authAxios.put('/api/review/placeinfos', null, { params: { placeId: selectedPlaceId } })
                         alert("리뷰가 성공적으로 작성되었습니다 ✨");
@@ -119,19 +119,19 @@ function WriteReview({ onWriteReview, selectedPlaceId, selectedPlaceName, place,
             <div className='review-write-container-write'>
                 <h2>리뷰 작성</h2>
                 <div className='writeReview2-write'>
-                    <div className='review-write-field-write'>
+                    <div className='review-write-field-write review-write-height40'>
                         <div className='review-write-label-write'>리뷰 작성자</div>
                         <div className='review-write-input-write'>
                             <input type="text" value={nickname} readOnly></input>
                         </div>
                     </div>
-                    <div className='review-write-field-write'>
+                    <div className='review-write-field-write review-write-height40'>
                         <div className='review-write-label-write'>음식점 이름</div>
                         <div className='review-write-input-write'>
                             <input type="text" value={selectedPlaceName} readOnly></input>
                         </div>
                     </div>
-                    <div className='review-write-field-write'>
+                    <div className='review-write-field-write review-write-height40'>
                         <div className='review-write-label-write'>별점</div>
                         <div className='review-write-input-write'>
                             <div>
@@ -150,25 +150,25 @@ function WriteReview({ onWriteReview, selectedPlaceId, selectedPlaceName, place,
                         </div>
                     </div>
                     <div className='review-write-field-write'>
-                        <div className='review-write-label-write'>내용</div>
+                        <div className='review-write-label-write review-write-height60'>내용</div>
                         <div className='review-write-input-write'>
                             <textarea
                                 value={content}
                                 onChange={(e) => { setContent(e.currentTarget.value) }}
                                 placeholder='내용을 입력해주세요...'
-                                rows="4"
-                                cols="70"
+                                rows="3 "
+                                cols="50"
                             ></textarea>
                         </div>
                     </div>
-                    <div className='review-write-field-write'>
+                    <div className='review-write-field-write review-write-height40'>
                         <div className='review-write-label-write'>사진</div>
-                        <div className='review-write-input-write'>
+                        <div className='review-write-input-write review-write-height40'>
                             <button onClick={showImgInput}> 사진 첨부 </button>
                             <input type="file" id="imgInput" onChange={(e) => { fileUpload(e) }}></input>
                         </div>
                     </div>
-                    <div className='review-write-field-write'>
+                    <div className='review-write-field-write review-write-height80'>
                         <div className='review-write-label-write'>이미지</div>
                         <div id="imgPrev" className='review-write-field-writeimgprev'></div>
                     </div>
